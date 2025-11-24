@@ -2,22 +2,15 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# --- SAYFA YAPILANDIRMASI (En başta olmalı) ---
 st.set_page_config(page_title="Melih Eren | Portfolyo", page_icon="👨‍💻", layout="wide")
 
-# --- API ANAHTARI AYARLARI (GÜVENLİ MOD) ---
 try:
-    # Streamlit Cloud üzerinde çalışırken anahtarı buradan çeker
     API_KEY = st.secrets["CEREBRAS_API_KEY"]
 except:
-    # Eğer bilgisayarında (Local) test ediyorsan ve hata alıyorsan,
-    # aşağıdaki boş tırnakların içine anahtarını yapıştırıp deneyebilirsin.
-    # AMA GITHUB'A YÜKLERKEN BURAYI BOŞ BIRAK VEYA SİL.
-    API_KEY = "BURAYA_ANAHTAR_YAZMA_GITHUB_ICIN_BOS_BIRAK"
+    API_KEY = ""
 
-# Eğer anahtar yoksa uyarı ver
-if API_KEY == "BURAYA_ANAHTAR_YAZMA_GITHUB_ICIN_BOS_BIRAK":
-    st.warning("⚠️ API Anahtarı bulunamadı. Streamlit Cloud 'Secrets' ayarlarını kontrol edin.")
+if API_KEY == "":
+    st.warning("⚠️ API Anahtarı bulunamadı. Lütfen Streamlit Secrets ayarlarını yapın.")
     st.stop()
 
 client = OpenAI(
@@ -25,11 +18,9 @@ client = OpenAI(
     api_key=API_KEY
 )
 
-# --- OTOMATİK DİL SIFIRLAMA ---
 if "current_lang" not in st.session_state:
     st.session_state.current_lang = "Türkçe"
 
-# --- SIDEBAR (SOL MENÜ) ---
 with st.sidebar:
     if os.path.exists("ben.jpg"):
         st.image("ben.jpg", width=150)
@@ -60,7 +51,6 @@ with st.sidebar:
     
     st.info("Powered by Cerebras AI")
 
-# --- CV VERİ TABANI ---
 if language == "Türkçe":
     SYSTEM_PROMPT = """
     GÖREV: Sen Melih Eren'in profesyonel asistanısın. Türkçe konuş.
@@ -72,10 +62,10 @@ if language == "Türkçe":
     --- DİL VE ÜSLUP KURALLARI ---
     1. YASAKLI KELİMELER: "Fırsatı buldum", "imkanı yakaladım", "deneyim kazandım", "projeleri teslim ettim".
     2. TERCİH EDİLEN FİİLLER: "Geliştirdim", "Tasarladım", "Kodladım", "Yönettim", "İnşa ettim", "Entegre ettim".
-    3. ÖZNE: Cümleleri hep "Ben" öznesiyle, 1. tekil şahıs kur (Örn: "Yaptım").
+    3. ÖZNE: Cümleleri hep "Ben" öznesiyle, 1. tekil şahıs kur.
     4. Linkler: Sertifikaları her zaman [İsim](Link) formatında ver.
 
-    --- DENEYİMLER (Soru: "İş deneyimlerin?" gelince HEPSİNİ anlat) ---
+    --- DENEYİMLER ---
     1. Yapay Zeka ve Teknoloji Akademisi (Bursiyer): 9 aylık yoğun eğitim sürecinde Google destekli Veri Bilimi projeleri geliştirdim. Python ve Makine Öğrenmesi algoritmalarını derinlemesine öğrendim.
     2. Huawei Student Developers (HSD): Core Team Member olarak topluluk organizasyonlarını yönettik ve teknik etkinliklere liderlik ettim.
     3. Payolog (ABD - Remote): Yazılım Stajyeri olarak Flutter ile mobil uygulamalar geliştirdim ve global bir ekipte aktif rol aldım.
@@ -108,7 +98,6 @@ if language == "Türkçe":
     """
     welcome_msg = "Merhaba! Ben Melih'in asistanı. Sertifikalarım, projelerim veya deneyimlerim hakkında ne bilmek istersiniz?"
     btn_labels = ["💼 İş Deneyimlerin?", "🚀 Projelerin Neler?", "📜 Sertifikaların?", "💻 Hangi Dilleri Biliyorsun?", "🌟 Neden Seni Seçmeliyiz?", "🎯 Kariyer Hedeflerin?"]
-    # GİZLİ SORULAR (TEMİZ VE KISA)
     hidden_prompts = [
         "İş deneyimlerinden bahseder misin?",
         "Geliştirdiğin kişisel projelerden bahseder misin?", 
@@ -118,7 +107,7 @@ if language == "Türkçe":
         "Kısa ve uzun vadeli kariyer hedeflerinden bahseder misin?"
     ]
 
-else: # ENGLISH
+else:
     SYSTEM_PROMPT = """
     ROLE: You are Melih Eren's AI assistant. Speak ONLY ENGLISH.
     
@@ -171,11 +160,9 @@ else: # ENGLISH
         "What are your short-term and long-term career goals?"
     ]
 
-# --- SAYFA BAŞLIĞI ---
 st.title("🎓 " + ("Melih Eren | Portfolyo" if language == "Türkçe" else "Melih Eren | Portfolio"))
 st.write(welcome_msg)
 
-# --- BUTONLAR ---
 col1, col2, col3 = st.columns(3)
 selected_prompt = None
 
@@ -191,7 +178,6 @@ with col3:
 
 st.divider()
 
-# --- CHAT GEÇMİŞİ ---
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "assistant", "content": welcome_msg}]
 
@@ -199,7 +185,6 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# --- SORU GÖNDERME ---
 if prompt := st.chat_input("..."):
     user_input = prompt
     display_text = prompt
