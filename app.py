@@ -2,20 +2,28 @@ import streamlit as st
 from openai import OpenAI
 import os
 
-# Anahtarı Streamlit'in gizli kasasından çekiyoruz
+# --- SAYFA YAPILANDIRMASI (En başta olmalı) ---
+st.set_page_config(page_title="Melih Eren | Portfolyo", page_icon="👨‍💻", layout="wide")
+
+# --- API ANAHTARI AYARLARI (GÜVENLİ MOD) ---
 try:
+    # Streamlit Cloud üzerinde çalışırken anahtarı buradan çeker
     API_KEY = st.secrets["CEREBRAS_API_KEY"]
 except:
-    # Eğer bilgisayarında test ediyorsan burası çalışır
-    API_KEY = "csk-m4t4cwj3n9rjnnr2f9trenmvp6jy2ev4p8y896x4wj55jtwf"
+    # Eğer bilgisayarında (Local) test ediyorsan ve hata alıyorsan,
+    # aşağıdaki boş tırnakların içine anahtarını yapıştırıp deneyebilirsin.
+    # AMA GITHUB'A YÜKLERKEN BURAYI BOŞ BIRAK VEYA SİL.
+    API_KEY = "BURAYA_ANAHTAR_YAZMA_GITHUB_ICIN_BOS_BIRAK"
+
+# Eğer anahtar yoksa uyarı ver
+if API_KEY == "BURAYA_ANAHTAR_YAZMA_GITHUB_ICIN_BOS_BIRAK":
+    st.warning("⚠️ API Anahtarı bulunamadı. Streamlit Cloud 'Secrets' ayarlarını kontrol edin.")
+    st.stop()
 
 client = OpenAI(
     base_url="https://api.cerebras.ai/v1",
     api_key=API_KEY
 )
-
-# --- SAYFA YAPILANDIRMASI ---
-st.set_page_config(page_title="Melih Eren | Portfolyo", page_icon="👨‍💻", layout="wide")
 
 # --- OTOMATİK DİL SIFIRLAMA ---
 if "current_lang" not in st.session_state:
@@ -55,14 +63,14 @@ with st.sidebar:
 # --- CV VERİ TABANI ---
 if language == "Türkçe":
     SYSTEM_PROMPT = """
-    GÖREV: Sen Melih Eren'in asistanısın. Türkçe konuş.
+    GÖREV: Sen Melih Eren'in profesyonel asistanısın. Türkçe konuş.
     
     --- KİMLİK & GİRİŞ ---
     Soru: "Kimsin?", "Kendini tanıt"
     Cevap: "Ben Melih Eren. Haliç Üniversitesi Yazılım Mühendisliği öğrencisiyim. Teknolojiye tutkulu, sürekli öğrenen ve global projelerde yer almayı hedefleyen bir mühendis adayıyım."
     
-    --- DİL VE ÜSLUP KURALLARI (ÇOK ÖNEMLİ) ---
-    1. YASAKLI KELİMELER: "Fırsatı buldum", "imkanı yakaladım", "deneyim kazandım", "projeleri teslim ettim". BUNLARI KULLANMA.
+    --- DİL VE ÜSLUP KURALLARI ---
+    1. YASAKLI KELİMELER: "Fırsatı buldum", "imkanı yakaladım", "deneyim kazandım", "projeleri teslim ettim".
     2. TERCİH EDİLEN FİİLLER: "Geliştirdim", "Tasarladım", "Kodladım", "Yönettim", "İnşa ettim", "Entegre ettim".
     3. ÖZNE: Cümleleri hep "Ben" öznesiyle, 1. tekil şahıs kur (Örn: "Yaptım").
     4. Linkler: Sertifikaları her zaman [İsim](Link) formatında ver.
@@ -100,7 +108,7 @@ if language == "Türkçe":
     """
     welcome_msg = "Merhaba! Ben Melih'in asistanı. Sertifikalarım, projelerim veya deneyimlerim hakkında ne bilmek istersiniz?"
     btn_labels = ["💼 İş Deneyimlerin?", "🚀 Projelerin Neler?", "📜 Sertifikaların?", "💻 Hangi Dilleri Biliyorsun?", "🌟 Neden Seni Seçmeliyiz?", "🎯 Kariyer Hedeflerin?"]
-    # GİZLİ SORULAR (ARTIK TEMİZ VE KISA)
+    # GİZLİ SORULAR (TEMİZ VE KISA)
     hidden_prompts = [
         "İş deneyimlerinden bahseder misin?",
         "Geliştirdiğin kişisel projelerden bahseder misin?", 
@@ -197,9 +205,7 @@ if prompt := st.chat_input("..."):
     display_text = prompt
 elif selected_prompt:
     user_input = selected_prompt
-    # BURASI DÜZELDİ: Ekranda temiz soru görünecek.
     if language == "Türkçe":
-        # Hangi butona basıldığını bulup ekrana temiz başlığı yazdırıyoruz
         index = hidden_prompts.index(selected_prompt)
         display_text = btn_labels[index] 
     else:
@@ -209,24 +215,15 @@ else:
     user_input = None
 
 if user_input:
-    st.session_state.messages.append({"role": "user", "content": display_text}) # Ekrana temiz soru ekle
+    st.session_state.messages.append({"role": "user", "content": display_text}) 
     with st.chat_message("user"):
         st.markdown(display_text)
 
     try:
-        # Sisteme "Gizli Detaylı Soruyu" gönderiyoruz ki cevabı tam versin.
-        # Ama geçmişe "Temiz Soruyu" eklemiştik.
-        # Burada küçük bir trick yapıp API'ye context'i doğru gönderiyoruz.
-        
-        # 1. Sistem Mesajı
         api_messages = [{"role": "system", "content": SYSTEM_PROMPT}]
-        
-        # 2. Geçmiş Mesajlar (Ekranda görünenler)
-        for msg in st.session_state.messages[1:]: # İlk hoşgeldin mesajını atla
+        for msg in st.session_state.messages[1:]: 
             api_messages.append(msg)
         
-        # 3. Son Kullanıcı Mesajı (Detaylı olan hidden_prompt)
-        # Eğer butona basıldıysa son mesajı 'hidden_prompt' olarak değiştirip gönderelim ki bot detaylı anlatsın.
         if selected_prompt:
              api_messages[-1] = {"role": "user", "content": selected_prompt}
 
