@@ -285,10 +285,18 @@ with tab1:
             for msg in recent_history:
                 api_messages.append(msg)
             
-            # If came from button, ensure the last user message is the hidden prompt
+            # If came from button, ensure the question is actually sent to the API!
             if selected_prompt:
+                 # Case 1: History was added, swap the last display message with hidden prompt
                  if api_messages and api_messages[-1]["role"] == "user":
                      api_messages[-1] = {"role": "user", "content": user_input}
+                 # Case 2: History was empty (or only system msg), so we MUST append the user prompt manually
+                 else:
+                     api_messages.append({"role": "user", "content": user_input})
+            
+            # Additional safeguard: If user typed manually but history trimming removed it (unlikely but possible)
+            elif user_input and (not api_messages or api_messages[-1]["role"] != "user"):
+                 api_messages.append({"role": "user", "content": user_input})
 
             with st.spinner("Thinking..." if lang_key == "en" else "Düşünüyor..."):
                 chat = client.chat.completions.create(
