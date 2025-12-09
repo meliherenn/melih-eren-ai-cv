@@ -185,17 +185,19 @@ with st.sidebar:
         if not st.session_state.is_admin:
             password = st.text_input("Şifre / Password", type="password")
             if st.button("Giriş / Login"):
-                # Try to get password from secrets, fallback to a safe default or hardcoded ONLY for local dev
                 try:
+                    # Securely fetch password from secrets
                     admin_pass = st.secrets["ADMIN_PASSWORD"]
-                except:
-                    admin_pass = "admin123" # Fallback for local testing only
-                
-                if password == admin_pass:
-                    st.session_state.is_admin = True
-                    st.rerun()
-                else:
-                    st.error("Hatalı şifre!")
+                    
+                    if password == admin_pass:
+                        st.session_state.is_admin = True
+                        st.rerun()
+                    else:
+                        st.error("Hatalı şifre!")
+                except FileNotFoundError:
+                     st.error("Secrets dosyası bulunamadı!")
+                except KeyError:
+                     st.error("Admin şifresi (ADMIN_PASSWORD) secrets içinde tanımlanmamış!")
         else:
             if st.button("Çıkış / Logout"):
                 st.session_state.is_admin = False
