@@ -108,12 +108,16 @@ def get_system_prompt(lang_data, lang_code, context=""):
         --- STYLE RULES (VERY IMPORTANT) ---
         {style_rules}
         
+        --- INSTRUCTIONS ---
+        1. ANSWER ONLY THE SPECIFIC QUESTION ASKED. Do not summarize the whole CV unless asked "Tell me about yourself".
+        2. If asked about "Projects", talk ONLY about Projects.
+        3. If asked about "Certificates", list them using the LINKS provided.
+        4. BE CONCISE.
+        
         --- EXPERIENCE ---
         {experiences}
         
-        --- CERTIFICATES (ALWAYS USE LINKS) ---
-        Question: "What are your certificates?"
-        Answer: "Here are my certificates:" (List them EXACTLY as [Name](Link)):
+        --- CERTIFICATES (MANDATORY FORMAT: [Name](Link)) ---
         {certificates}
         
         --- PROJECTS ---
@@ -126,7 +130,9 @@ def get_system_prompt(lang_data, lang_code, context=""):
         {skills}
         {context_str}
         
-        IMPORTANT: Be concise. When listing certificates, YOU MUST USE THE MARKDOWN LINK FORMAT: [Certificate Name](URL). Do not just write the name.
+        IMPORTANT: 
+        - When listing certificates, YOU MUST USE THE MARKDOWN LINK FORMAT: [Certificate Name](URL). 
+        - DO NOT invent roles. For HSD, use the description provided above (Core Team Member, contribution role).
         """
 
 # --- SIDEBAR ---
