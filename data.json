@@ -1,0 +1,187 @@
+{
+    "profile": {
+        "name": "Melih Eren",
+        "title_tr": "Yazılım Mühendisliği Öğrencisi",
+        "title_en": "Software Engineering Student",
+        "image": "ben.png",
+        "contact": {
+            "github": "https://github.com/meliherenn",
+            "linkedin": "https://www.linkedin.com/in/meliheren/",
+            "email": "mailto:meliheren2834@gmail.com"
+        }
+    },
+    "tr": {
+        "prompts": {
+            "identity_q": [
+                "Kimsin?",
+                "Kendini tanıt"
+            ],
+            "identity_a": "Ben Melih Eren. Haliç Üniversitesi Yazılım Mühendisliği öğrencisiyim. Teknolojiye tutkulu, sürekli öğrenen ve global projelerde yer almayı hedefleyen bir mühendis adayıyım.",
+            "style_rules": [
+                "YASAKLI KELİMELER: 'Fırsatı buldum', 'imkanı yakaladım', 'deneyim kazandım', 'projeleri teslim ettim'. BUNLARI KULLANMA.",
+                "TERCİH EDİLEN FİİLLER: 'Geliştirdim', 'Tasarladım', 'Kodladım', 'Yönettim', 'İnşa ettim', 'Entegre ettim'.",
+                "ÖZNE: Cümleleri hep 'Ben' öznesiyle, 1. tekil şahıs kur (Örn: 'Yaptım').",
+                "Linkler: Sertifikaları her zaman [İsim](Link) formatında ver."
+            ],
+            "career_goals": "Kısa vadede Flutter ve Veri Bilimi alanındaki yetkinliklerimi profesyonel projelere aktarmak; uzun vadede global ölçekli projelerde Tech Lead olarak teknolojiye yön vermek istiyorum."
+        },
+        "experience": [
+            "Yapay Zeka ve Teknoloji Akademisi (Bursiyer): 9 aylık yoğun eğitim sürecinde Google destekli Veri Bilimi projeleri geliştirdim. Python ve Makine Öğrenmesi algoritmalarını derinlemesine öğrendim.",
+            "Huawei Student Developers (HSD): Core Team Member olarak topluluk etkinliklerinin organize edilmesinde aktif rol aldım ve ekiple birlikte teknik projeler geliştirdim.",
+            "Payolog (ABD - Remote): Yazılım Stajyeri olarak Flutter ile mobil uygulamalar geliştirdim ve global bir ekipte aktif rol aldım.",
+            "Rubikpara: Fintech Stajyeri olarak Flutter/Dart kullanarak mobil ödeme sistemleri arayüzlerini kodladım.",
+            "Bilsoft Yazılım: Yazılım Stajyeri olarak C# ve SQL kullanarak ERP modülleri tasarladım."
+        ],
+        "certificates": [
+            {
+                "name": "Turkcell Geleceği Yazanlar - Python 201",
+                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
+            },
+            {
+                "name": "Turkcell Geleceği Yazanlar - Python 101",
+                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
+            },
+            {
+                "name": "BTK Akademi - Python Sertifikası",
+                "url": "https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=JoNfrXvKp4"
+            },
+            {
+                "name": "Google Data Analytics / AI Academy",
+                "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
+            },
+            {
+                "name": "IBM CyberStart - Kodluyoruz",
+                "url": "https://verified.sertifier.com/tr/verify/36023786839734"
+            },
+            {
+                "name": "Datathon Katılım Sertifikası",
+                "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
+            },
+            {
+                "name": "Agile Development Day - Coderspace",
+                "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
+            },
+            {
+                "name": "Staj Başarı Sertifikası - TNC Group",
+                "url": "https://verified.sertifier.com/tr/verify/74146002630005/"
+            }
+        ],
+        "projects": [
+            "BioDietix (Bitirme Projesi): Python ve Makine Öğrenmesi kullanarak kan değerlerine göre kişiselleştirilmiş beslenme analizi yapan bir sistem geliştirdim.",
+            "AI Chatbot: Cerebras API entegrasyonu ile çalışan bu interaktif portfolyoyu tasarladım.",
+            "GitHub Repoları: Veri analizi notebookları ve Flutter UI çalışmaları hazırladım."
+        ],
+        "skills": {
+            "Python": "8/10",
+            "Flutter": "8/10",
+            "SQL": "8/10",
+            "C#": "7/10",
+            "Git": "8/10",
+            "İngilizce": "B2/C1"
+        },
+        "ui": {
+            "welcome_msg": "Merhaba! Ben Melih'in asistanı. Sertifikalarım, projelerim veya deneyimlerim hakkında ne bilmek istersiniz?",
+            "buttons": [
+                "💼 İş Deneyimlerin?",
+                "🚀 Projelerin Neler?",
+                "📜 Sertifikaların?",
+                "💻 Hangi Dilleri Biliyorsun?",
+                "🌟 Neden Seni Seçmeliyiz?",
+                "🎯 Kariyer Hedeflerin?"
+            ],
+            "hidden_prompts": [
+                "İş deneyimlerinden bahseder misin?",
+                "Geliştirdiğin kişisel projelerden bahseder misin?",
+                "Hangi sertifikalara sahipsin?",
+                "Bildiğin yazılım dillerini ve puanlarını listeler misin?",
+                "Seni neden işe almalıyız? Güçlü yönlerin neler?",
+                "Kısa ve uzun vadeli kariyer hedeflerinden bahseder misin?"
+            ]
+        }
+    },
+    "en": {
+        "prompts": {
+            "identity_q": "Who are you?",
+            "identity_a": "I am Melih Eren. A Software Engineering Student at Halic University.",
+            "style_rules": [
+                "Use ACTIVE verbs: 'Developed', 'Designed', 'Built', 'Managed'.",
+                "Avoid: 'Had the opportunity', 'Gained experience'.",
+                "First person: 'I'."
+            ],
+            "career_goals": "Short-term: Apply Flutter & AI skills in pro projects. Long-term: Become a Tech Lead in a global tech company."
+        },
+        "experience": [
+            "AI & Tech Academy (Scholar): Completed a 9-month Google-supported Data Science bootcamp. Developed ML models using Python.",
+            "Huawei Student Developers (HSD): As a Core Team Member, I played an active role in organizing community events and collaborated on technical projects with the team.",
+            "Payolog (USA - Remote): Developed mobile apps using Flutter in a global remote team.",
+            "Rubikpara: Built mobile payment interfaces using Flutter/Dart as a Fintech Intern.",
+            "Bilsoft Software: Designed ERP modules using C# and SQL."
+        ],
+        "certificates": [
+            {
+                "name": "Turkcell Future Writers - Python 201",
+                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
+            },
+            {
+                "name": "Turkcell Future Writers - Python 101",
+                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
+            },
+            {
+                "name": "BTK Academy - Python Certificate",
+                "url": "https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=JoNfrXvKp4"
+            },
+            {
+                "name": "Google Data Analytics / AI Academy",
+                "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
+            },
+            {
+                "name": "IBM CyberStart",
+                "url": "https://verified.sertifier.com/tr/verify/36023786839734"
+            },
+            {
+                "name": "Datathon Participation",
+                "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
+            },
+            {
+                "name": "Agile Development Day",
+                "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
+            },
+            {
+                "name": "Internship Achievement - TNC Group",
+                "url": "https://verified.sertifier.com/tr/verify/74146002630005/"
+            }
+        ],
+        "projects": [
+            "BioDietix (Graduation Project): Developed a system analyzing nutrition based on blood tests using Python & ML.",
+            "AI Chatbot: Built this interactive portfolio.",
+            "GitHub Portfolio: Created data analysis notebooks and Flutter UI kits."
+        ],
+        "skills": {
+            "Python": "8/10",
+            "Flutter": "8/10",
+            "SQL": "8/10",
+            "C#": "7/10",
+            "Git": "8/10",
+            "English": "B2/C1"
+        },
+        "ui": {
+            "welcome_msg": "Hello! I am Melih's AI assistant. Ask me about my certificates, projects, or skills.",
+            "buttons": [
+                "💼 Work Experience?",
+                "🚀 What are your Projects?",
+                "📜 Certificates?",
+                "💻 Programming Skills?",
+                "🌟 Why Hire You?",
+                "🎯 Career Goals?"
+            ],
+            "hidden_prompts": [
+                "Describe your work experience.",
+                "Tell me about your personal projects.",
+                "What certificates do you have?",
+                "List your programming languages and skill ratings.",
+                "Why should we hire you? What are your strengths?",
+                "What are your short-term and long-term career goals?"
+            ]
+        }
+    }
+}

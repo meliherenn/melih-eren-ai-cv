@@ -1,0 +1,139 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* --- BACKGROUND ANIMATION --- */
+div.stApp {
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* --- SIDEBAR --- */
+section[data-testid="stSidebar"] {
+    background-color: rgba(17, 25, 40, 0.75) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    border-right: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+section[data-testid="stSidebar"] h1 {
+    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* --- GLASSMORPHISM CARDS --- */
+div[data-testid="stChatMessage"] {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+div[data-testid="stChatMessage"][data-testid="user"] {
+    background: rgba(0, 210, 255, 0.15);
+    /* Light Blue Tint for User */
+    border-left: 4px solid #00d2ff;
+}
+
+div[data-testid="stChatMessage"][data-testid="assistant"] {
+    background: rgba(46, 204, 113, 0.15);
+    /* Light Green Tint for AI */
+    border-left: 4px solid #2ecc71;
+}
+
+/* --- BUTTONS --- */
+div.stButton>button {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+}
+
+div.stButton>button:hover {
+    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%) !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    transform: translateY(-2px);
+    font-weight: 700;
+}
+
+/* --- TEXT & HEADERS --- */
+h1,
+h2,
+h3 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.stTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 3rem !important;
+    background: linear-gradient(to right, #00d2ff, #928DAB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a {
+    color: #00d2ff !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* --- INPUT FIELD --- */
+div[data-testid="stChatInput"] {
+    background-color: transparent !important;
+}
+
+textarea[data-testid="stChatInputTextArea"] {
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 12px;
+}
+
+textarea[data-testid="stChatInputTextArea"]:focus {
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+    width: 8px;
+    background: #0e1117;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a7bd5;
+    border-radius: 4px;
+}
