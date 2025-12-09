@@ -47,7 +47,8 @@ except FileNotFoundError:
 try:
     API_KEY = st.secrets["CEREBRAS_API_KEY"]
 except:
-    API_KEY = "csk-m4t4cwj3n9rjnnr2f9trenmvp6jy2ev4p8y896x4wj55jtwf"
+    st.error("API Key bulunamadı! Lütfen Streamlit Secrets ayarlarını kontrol edin.")
+    st.stop()
 
 client = OpenAI(
     base_url="https://api.cerebras.ai/v1",
