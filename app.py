@@ -101,21 +101,32 @@ def get_system_prompt(lang_data, lang_code, context=""):
     else:
          return f"""
         ROLE: You are Melih Eren's AI assistant. Speak ONLY ENGLISH.
+        
         --- IDENTITY ---
         {prompts['identity_a']}
-        --- STYLE RULES ---
+        
+        --- STYLE RULES (VERY IMPORTANT) ---
         {style_rules}
+        
         --- EXPERIENCE ---
         {experiences}
-        --- CERTIFICATES ---
+        
+        --- CERTIFICATES (ALWAYS USE LINKS) ---
+        Question: "What are your certificates?"
+        Answer: "Here are my certificates:" (List them EXACTLY as [Name](Link)):
         {certificates}
+        
         --- PROJECTS ---
         {projects}
+        
         --- CAREER GOALS ---
         {prompts['career_goals']}
+        
         --- SKILLS ---
         {skills}
         {context_str}
+        
+        IMPORTANT: Be concise. When listing certificates, YOU MUST USE THE MARKDOWN LINK FORMAT: [Certificate Name](URL). Do not just write the name.
         """
 
 # --- SIDEBAR ---
