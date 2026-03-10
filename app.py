@@ -338,7 +338,7 @@ with tab1:
             spinner_text = "🧠 Düşünüyor..." if lang_key == "tr" else "🧠 Thinking..."
             with st.spinner(spinner_text):
                 chat = client.chat.completions.create(
-                    model="llama-3.3-70b",
+                    model="llama3.1-8b",
                     messages=api_messages,
                     temperature=0.3,
                     max_tokens=1024
