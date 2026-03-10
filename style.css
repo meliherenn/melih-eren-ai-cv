@@ -1,139 +1,280 @@
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+/* ===== GOOGLE FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-html,
-body,
-[class*="css"] {
+/* ===== BASE ===== */
+html, body, [class*="css"] {
     font-family: 'Outfit', sans-serif;
 }
 
-/* --- BACKGROUND ANIMATION --- */
+/* ===== ANIMATED BACKGROUND ===== */
 div.stApp {
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a2e);
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    animation: gradientShift 20s ease infinite;
 }
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* --- SIDEBAR --- */
+/* ===== SIDEBAR ===== */
 section[data-testid="stSidebar"] {
-    background-color: rgba(17, 25, 40, 0.75) !important;
-    backdrop-filter: blur(16px) saturate(180%);
-    border-right: 1px solid rgba(255, 255, 255, 0.125);
+    background: rgba(17, 25, 40, 0.85) !important;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 section[data-testid="stSidebar"] h1 {
-    background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    background: linear-gradient(135deg, #00d2ff 0%, #7b2fef 50%, #ff6b9d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
+    font-size: 1.8rem !important;
+    letter-spacing: -0.5px;
 }
 
-/* --- GLASSMORPHISM CARDS --- */
-div[data-testid="stChatMessage"] {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+/* Sidebar profile image */
+section[data-testid="stSidebar"] img {
+    border-radius: 50%;
+    border: 3px solid rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+    transition: all 0.4s ease;
 }
 
-div[data-testid="stChatMessage"][data-testid="user"] {
-    background: rgba(0, 210, 255, 0.15);
-    /* Light Blue Tint for User */
-    border-left: 4px solid #00d2ff;
+section[data-testid="stSidebar"] img:hover {
+    border-color: rgba(0, 210, 255, 0.8);
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+    transform: scale(1.05);
 }
 
-div[data-testid="stChatMessage"][data-testid="assistant"] {
-    background: rgba(46, 204, 113, 0.15);
-    /* Light Green Tint for AI */
-    border-left: 4px solid #2ecc71;
-}
-
-/* --- BUTTONS --- */
-div.stButton>button {
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 12px;
-    padding: 0.6rem 1rem;
+/* Sidebar links */
+section[data-testid="stSidebar"] a {
+    color: #a8d8ea !important;
+    text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    display: inline-block;
+}
+
+section[data-testid="stSidebar"] a:hover {
+    color: #00d2ff !important;
+    transform: translateX(4px);
+}
+
+/* ===== GLASSMORPHISM CHAT MESSAGES ===== */
+div[data-testid="stChatMessage"] {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+div[data-testid="stChatMessage"]:hover {
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* User messages */
+div[data-testid="stChatMessage"][data-testid="user"] {
+    background: rgba(0, 210, 255, 0.08);
+    border-left: 3px solid #00d2ff;
+}
+
+/* Assistant messages */
+div[data-testid="stChatMessage"][data-testid="assistant"] {
+    background: rgba(123, 47, 239, 0.08);
+    border-left: 3px solid #7b2fef;
+}
+
+/* ===== BUTTONS ===== */
+div.stButton > button {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px;
+    padding: 0.7rem 1.2rem;
+    font-weight: 500;
     font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
 }
 
-div.stButton>button:hover {
-    background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%) !important;
-    border-color: transparent !important;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+div.stButton > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+div.stButton > button:hover {
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(123, 47, 239, 0.2)) !important;
+    border-color: rgba(0, 210, 255, 0.4) !important;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.25), 0 0 40px rgba(123, 47, 239, 0.1);
     transform: translateY(-2px);
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* --- TEXT & HEADERS --- */
-h1,
-h2,
-h3 {
+div.stButton > button:hover::before {
+    left: 100%;
+}
+
+div.stButton > button:active {
+    transform: translateY(0px);
+}
+
+/* Download button special style */
+div.stDownloadButton > button {
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(123, 47, 239, 0.15)) !important;
+    border: 1px solid rgba(0, 210, 255, 0.3) !important;
+    border-radius: 12px;
+    color: #ffffff !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+div.stDownloadButton > button:hover {
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(123, 47, 239, 0.3)) !important;
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== HEADERS & TEXT ===== */
+h1, h2, h3 {
     color: #ffffff;
     font-weight: 700;
 }
 
-.stTitle {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem !important;
-    background: linear-gradient(to right, #00d2ff, #928DAB);
+/* Main title gradient */
+div[data-testid="stAppViewBlockContainer"] > div:first-child h1 {
+    background: linear-gradient(135deg, #00d2ff, #7b2fef, #ff6b9d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 2.5rem !important;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: -1px;
 }
 
 a {
     color: #00d2ff !important;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
-/* --- INPUT FIELD --- */
+a:hover {
+    color: #7b2fef !important;
+}
+
+/* ===== CHAT INPUT ===== */
 div[data-testid="stChatInput"] {
     background-color: transparent !important;
 }
 
 textarea[data-testid="stChatInputTextArea"] {
-    background-color: rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
     color: white !important;
-    border-radius: 12px;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
 }
 
 textarea[data-testid="stChatInputTextArea"]:focus {
     border-color: #00d2ff !important;
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.25), 0 0 30px rgba(0, 210, 255, 0.1);
 }
 
-/* --- SCROLLBAR --- */
+/* ===== TABS ===== */
+div[data-testid="stTabs"] button[data-baseweb="tab"] {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+div[data-testid="stTabs"] button[aria-selected="true"] {
+    color: #00d2ff !important;
+    border-bottom-color: #00d2ff !important;
+    font-weight: 700;
+}
+
+/* ===== EXPANDER ===== */
+div[data-testid="stExpander"] {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+div[data-testid="stExpander"]:hover {
+    border-color: rgba(0, 210, 255, 0.2);
+}
+
+/* ===== DIVIDER ===== */
+hr {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    margin: 1rem 0;
+}
+
+/* ===== RADIO BUTTONS ===== */
+div[data-testid="stRadio"] label {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+}
+
+/* ===== SPINNER ===== */
+div[data-testid="stSpinner"] {
+    color: #00d2ff !important;
+}
+
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-    width: 8px;
-    background: #0e1117;
+    width: 6px;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3a7bd5;
-    border-radius: 4px;
+    background: linear-gradient(180deg, #00d2ff, #7b2fef);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00b8e6, #6a23d6);
+}
+
+/* ===== ALERTS & INFO BOXES ===== */
+div[data-testid="stAlert"] {
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+div[data-testid="stChatMessage"] {
+    animation: fadeInUp 0.4s ease-out;
 }

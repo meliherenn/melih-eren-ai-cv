@@ -4,6 +4,8 @@
         "title_tr": "Yazılım Mühendisliği Öğrencisi",
         "title_en": "Software Engineering Student",
         "image": "ben.png",
+        "cv_pdf_tr": "Melih_Eren_cvtr.pdf",
+        "cv_pdf_en": "Melih_Eren_ATS_CV.pdf",
         "contact": {
             "github": "https://github.com/meliherenn",
             "linkedin": "https://www.linkedin.com/in/meliheren/",
@@ -16,12 +18,13 @@
                 "Kimsin?",
                 "Kendini tanıt"
             ],
-            "identity_a": "Ben Melih Eren. Haliç Üniversitesi Yazılım Mühendisliği öğrencisiyim. Teknolojiye tutkulu, sürekli öğrenen ve global projelerde yer almayı hedefleyen bir mühendis adayıyım.",
+            "identity_a": "Ben Melih Eren. Haliç Üniversitesi Yazılım Mühendisliği 4. sınıf öğrencisiyim. Teknolojiye tutkulu, sürekli öğrenen ve global projelerde yer almayı hedefleyen bir mühendis adayıyım. Flutter ile mobil uygulama geliştirme, Python ile veri bilimi ve makine öğrenmesi alanlarında deneyim sahibiyim.",
             "style_rules": [
                 "YASAKLI KELİMELER: 'Fırsatı buldum', 'imkanı yakaladım', 'deneyim kazandım', 'projeleri teslim ettim'. BUNLARI KULLANMA.",
                 "TERCİH EDİLEN FİİLLER: 'Geliştirdim', 'Tasarladım', 'Kodladım', 'Yönettim', 'İnşa ettim', 'Entegre ettim'.",
                 "ÖZNE: Cümleleri hep 'Ben' öznesiyle, 1. tekil şahıs kur (Örn: 'Yaptım').",
-                "Linkler: Sertifikaları her zaman [İsim](Link) formatında ver."
+                "Linkler: Sertifikaları her zaman [İsim](Link) formatında ver.",
+                "SADECE sorulan konuyu cevapla. 'Kendini tanıt' denmediği sürece tüm CV'yi özetleme."
             ],
             "career_goals": "Kısa vadede Flutter ve Veri Bilimi alanındaki yetkinliklerimi profesyonel projelere aktarmak; uzun vadede global ölçekli projelerde Tech Lead olarak teknolojiye yön vermek istiyorum."
         },
@@ -68,19 +71,22 @@
         ],
         "projects": [
             "BioDietix (Bitirme Projesi): Python ve Makine Öğrenmesi kullanarak kan değerlerine göre kişiselleştirilmiş beslenme analizi yapan bir sistem geliştirdim.",
-            "AI Chatbot: Cerebras API entegrasyonu ile çalışan bu interaktif portfolyoyu tasarladım.",
+            "AI CV Chatbot: Cerebras API ve RAG (FAISS) entegrasyonu ile çalışan bu interaktif portfolyo chatbot'u tasarladım ve geliştirdim.",
+            "Flutter Mobil Uygulamalar: Expense Tracker, Recipe App ve E-Commerce UI gibi çeşitli Flutter projeleri geliştirdim.",
             "GitHub Repoları: Veri analizi notebookları ve Flutter UI çalışmaları hazırladım."
         ],
         "skills": {
             "Python": "8/10",
-            "Flutter": "8/10",
+            "Flutter/Dart": "8/10",
             "SQL": "8/10",
             "C#": "7/10",
-            "Git": "8/10",
+            "Git & GitHub": "8/10",
+            "Makine Öğrenmesi": "7/10",
+            "Streamlit": "8/10",
             "İngilizce": "B2/C1"
         },
         "ui": {
-            "welcome_msg": "Merhaba! Ben Melih'in asistanı. Sertifikalarım, projelerim veya deneyimlerim hakkında ne bilmek istersiniz?",
+            "welcome_msg": "👋 Merhaba! Ben Melih'in AI asistanıyım. Deneyimlerim, projelerim, sertifikalarım veya yeteneklerim hakkında her şeyi sorabilirsiniz!",
             "buttons": [
                 "💼 İş Deneyimlerin?",
                 "🚀 Projelerin Neler?",
@@ -102,20 +108,22 @@
     "en": {
         "prompts": {
             "identity_q": "Who are you?",
-            "identity_a": "I am Melih Eren. A Software Engineering Student at Halic University.",
+            "identity_a": "I am Melih Eren, a senior Software Engineering student at Halic University. I am passionate about technology, a continuous learner, and aspire to contribute to global-scale projects. I have hands-on experience in mobile app development with Flutter, data science and machine learning with Python.",
             "style_rules": [
-                "Use ACTIVE verbs: 'Developed', 'Designed', 'Built', 'Managed'.",
-                "Avoid: 'Had the opportunity', 'Gained experience'.",
-                "First person: 'I'."
+                "Use ACTIVE verbs: 'Developed', 'Designed', 'Built', 'Managed', 'Integrated'.",
+                "Avoid: 'Had the opportunity', 'Gained experience', 'Was able to'.",
+                "First person: Always use 'I' as the subject.",
+                "Links: Always format certificates as [Name](URL).",
+                "ANSWER ONLY the specific question asked. Do not summarize the whole CV unless asked 'Tell me about yourself'."
             ],
-            "career_goals": "Short-term: Apply Flutter & AI skills in pro projects. Long-term: Become a Tech Lead in a global tech company."
+            "career_goals": "Short-term: Apply my Flutter & AI/Data Science skills in professional projects. Long-term: Become a Tech Lead in a global tech company, driving innovation and leading engineering teams."
         },
         "experience": [
-            "AI & Tech Academy (Scholar): Completed a 9-month Google-supported Data Science bootcamp. Developed ML models using Python.",
-            "Huawei Student Developers (HSD): As a Core Team Member, I played an active role in organizing community events and collaborated on technical projects with the team.",
-            "Payolog (USA - Remote): Developed mobile apps using Flutter in a global remote team.",
+            "AI & Tech Academy (Scholar): Completed a 9-month intensive Google-supported Data Science bootcamp. Built ML models and gained deep Python expertise.",
+            "Huawei Student Developers (HSD): As a Core Team Member, I organized community events and collaborated on technical projects with the team.",
+            "Payolog (USA - Remote): Developed mobile applications using Flutter in a global remote team as a Software Intern.",
             "Rubikpara: Built mobile payment interfaces using Flutter/Dart as a Fintech Intern.",
-            "Bilsoft Software: Designed ERP modules using C# and SQL."
+            "Bilsoft Software: Designed ERP modules using C# and SQL as a Software Intern."
         ],
         "certificates": [
             {
@@ -135,15 +143,15 @@
                 "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
             },
             {
-                "name": "IBM CyberStart",
+                "name": "IBM CyberStart - Kodluyoruz",
                 "url": "https://verified.sertifier.com/tr/verify/36023786839734"
             },
             {
-                "name": "Datathon Participation",
+                "name": "Datathon Participation Certificate",
                 "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
             },
             {
-                "name": "Agile Development Day",
+                "name": "Agile Development Day - Coderspace",
                 "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
             },
             {
@@ -152,20 +160,23 @@
             }
         ],
         "projects": [
-            "BioDietix (Graduation Project): Developed a system analyzing nutrition based on blood tests using Python & ML.",
-            "AI Chatbot: Built this interactive portfolio.",
+            "BioDietix (Graduation Project): Developed a personalized nutrition analysis system based on blood test values using Python & Machine Learning.",
+            "AI CV Chatbot: Designed and built this interactive portfolio chatbot with Cerebras API and RAG (FAISS) integration.",
+            "Flutter Mobile Apps: Developed various Flutter projects including Expense Tracker, Recipe App, and E-Commerce UI.",
             "GitHub Portfolio: Created data analysis notebooks and Flutter UI kits."
         ],
         "skills": {
             "Python": "8/10",
-            "Flutter": "8/10",
+            "Flutter/Dart": "8/10",
             "SQL": "8/10",
             "C#": "7/10",
-            "Git": "8/10",
+            "Git & GitHub": "8/10",
+            "Machine Learning": "7/10",
+            "Streamlit": "8/10",
             "English": "B2/C1"
         },
         "ui": {
-            "welcome_msg": "Hello! I am Melih's AI assistant. Ask me about my certificates, projects, or skills.",
+            "welcome_msg": "👋 Hello! I am Melih's AI assistant. Ask me anything about his experience, projects, certificates, or skills!",
             "buttons": [
                 "💼 Work Experience?",
                 "🚀 What are your Projects?",
