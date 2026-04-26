@@ -1,101 +1,132 @@
-# 🚀 Melih Eren | AI Portfolio Chatbot
+# Melih Eren | AI Portfolio Chatbot
 
-An interactive AI-powered portfolio chatbot built with **Streamlit**, **Cerebras AI (LLaMA 3.3)**, and **RAG (FAISS)** for intelligent, context-aware conversations about my CV.
+Interactive Streamlit portfolio chatbot with bilingual CV data, FAISS retrieval, a configurable OpenAI-compatible LLM provider, and deterministic safety guardrails for secrets, prompt injection, and missing API keys.
 
-🌐 **Live Demo:** [melih-eren-ai-cv.streamlit.app](https://melih-eren-ai-cv.streamlit.app)
+Live demo: [melih-eren-ai-cv.streamlit.app](https://melih-eren-ai-cv.streamlit.app)
 
----
-
-## ✨ Features
+## Features
 
 | Feature | Description |
-|---------|-------------|
-| 🤖 **AI Chatbot** | Powered by Cerebras AI (LLaMA 3.3-70B) for natural conversations |
-| 📄 **RAG System** | FAISS vector database for PDF-based context retrieval |
-| 🌍 **Bilingual** | Full Turkish & English support with language-aware responses |
-| 📥 **CV Download** | Language-specific PDF download (TR/EN) |
-| 🔐 **Admin Panel** | Secure panel to edit all CV data (profile, experience, projects, skills, certificates) |
-| 🎨 **Premium UI** | Glassmorphism design with animated gradients and micro-interactions |
+| --- | --- |
+| AI Chat | Uses a configurable LLM provider. Default preset: Cerebras with `gpt-oss-120b`. |
+| Safe Offline Mode | If no API key is configured, the app still answers common portfolio questions from verified local data. |
+| Prompt Injection Guardrails | Blocks requests for hidden prompts, system instructions, API keys, passwords, tokens, and jailbreak-style instructions before the LLM call. |
+| RAG | FAISS + sentence-transformers retrieve relevant CV context by language. |
+| Bilingual UI | Turkish and English profile data, prompts, buttons, and CV downloads. |
+| Admin Panel | Password-protected local editor for profile, experience, projects, skills, and certificates. |
 
----
+## Tech Stack
 
-## 🛠️ Tech Stack
+- Streamlit
+- OpenAI Python SDK for OpenAI-compatible APIs
+- Cerebras, Groq, or Gemini provider presets
+- LangChain + FAISS
+- sentence-transformers
+- Python standard-library unit tests for guardrails
 
-- **Frontend:** Streamlit
-- **AI/LLM:** Cerebras AI API (LLaMA 3.3-70B)
-- **RAG:** LangChain + FAISS + sentence-transformers
-- **Styling:** Custom CSS (Glassmorphism, Gradient Animations)
-- **Language:** Python
-
----
-
-## 📦 Installation
+## Setup
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/meliherenn/melih-eren-ai-cv.git
 cd melih-eren-ai-cv
 
-# 2. Install dependencies
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Set up secrets
-mkdir -p .streamlit
-cat > .streamlit/secrets.toml << EOF
+cp .streamlit/secrets.toml.example .streamlit/secrets.toml
+```
+
+Edit `.streamlit/secrets.toml`:
+
+```toml
+LLM_PROVIDER = "cerebras"
+LLM_MODEL = "gpt-oss-120b"
 CEREBRAS_API_KEY = "your-cerebras-api-key"
-ADMIN_PASSWORD = "your-admin-password"
-EOF
+ADMIN_PASSWORD = "your-strong-admin-password"
+```
 
-# 4. Build the vector database
+Build or refresh the vector database:
+
+```bash
 python build_vector_db.py
+```
 
-# 5. Run the app
+Run locally:
+
+```bash
 streamlit run app.py
 ```
 
----
+## Provider Configuration
 
-## 📁 Project Structure
+The app defaults to Cerebras. You can switch providers without changing code:
 
+```toml
+# Groq example
+LLM_PROVIDER = "groq"
+LLM_MODEL = "llama-3.3-70b-versatile"
+GROQ_API_KEY = "your-groq-key"
 ```
+
+```toml
+# Gemini OpenAI-compatible example
+LLM_PROVIDER = "gemini"
+LLM_MODEL = "gemini-2.5-flash-lite"
+GEMINI_API_KEY = "your-gemini-key"
+```
+
+For any OpenAI-compatible endpoint:
+
+```toml
+LLM_BASE_URL = "https://provider.example/v1"
+LLM_API_KEY = "your-provider-key"
+LLM_MODEL = "provider-model-id"
+```
+
+## Security Notes
+
+- Never commit `.streamlit/secrets.toml`, `.env`, API keys, or admin passwords.
+- The app refuses to reveal or invent credentials, even if a user asks directly.
+- Retrieved CV text is treated as evidence only, not as executable instructions.
+- `faiss_index/index.pkl` is a trusted local artifact. Regenerate it with `python build_vector_db.py` after changing CV PDFs.
+- Use Python 3.11 for deployment. `runtime.txt` pins this for Streamlit-style platforms and avoids unnecessary Python 3.14 ML package churn.
+
+## Tests
+
+```bash
+python -m unittest discover -s tests
+python -m py_compile app.py build_vector_db.py guardrails.py
+```
+
+## Project Structure
+
+```text
 cv-bot/
-├── app.py                  # Main Streamlit application
-├── build_vector_db.py      # Vector DB builder (processes TR & EN PDFs)
-├── data.json               # CV data (bilingual)
-├── style.css               # Custom CSS styles
-├── requirements.txt        # Python dependencies
-├── ben.png                 # Profile photo
-├── Melih_Eren_cvtr.pdf     # Turkish CV
-├── Melih_Eren_ATS_CV.pdf   # English ATS CV
-├── faiss_index/            # FAISS vector database
-│   ├── index.faiss
-│   └── index.pkl
-└── .streamlit/
-    ├── config.toml         # Streamlit theme config
-    └── secrets.toml        # API keys (not committed)
+├── app.py
+├── guardrails.py
+├── build_vector_db.py
+├── data.json
+├── style.css
+├── runtime.txt
+├── tests/
+│   └── test_guardrails.py
+├── .streamlit/
+│   ├── config.toml
+│   └── secrets.toml.example
+├── faiss_index/
+├── Melih_Eren_cvtr.pdf
+└── Melih_Eren_ATS_CV.pdf
 ```
 
----
+## Author
 
-## 🔑 Environment Variables
+Melih Eren — Software Engineering Student @ Halic University
 
-| Key | Description |
-|-----|-------------|
-| `CEREBRAS_API_KEY` | API key from [Cerebras AI](https://cloud.cerebras.ai/) |
-| `ADMIN_PASSWORD` | Password for the admin panel |
+- GitHub: [meliherenn](https://github.com/meliherenn)
+- LinkedIn: [melih-eren](https://www.linkedin.com/in/meliheren/)
+- Email: meliheren2834@gmail.com
 
----
+## License
 
-## 👨‍💻 Author
-
-**Melih Eren** — Software Engineering Student @ Halic University
-
-- 🐙 [GitHub](https://github.com/meliherenn)
-- 💼 [LinkedIn](https://www.linkedin.com/in/meliheren/)
-- 📧 meliheren2834@gmail.com
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+MIT License

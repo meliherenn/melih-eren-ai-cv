@@ -2,34 +2,57 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-import os
+import json
+from pathlib import Path
+
+
+APP_ROOT = Path(__file__).resolve().parent
+DATA_PATH = APP_ROOT / "data.json"
+
+
+def get_configured_pdfs():
+    """Read active CV PDF paths from data.json instead of hardcoding filenames."""
+    with DATA_PATH.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    profile = data.get("profile", {})
+    return [
+        (profile.get("cv_pdf_tr"), "tr"),
+        (profile.get("cv_pdf_en"), "en"),
+    ]
+
 
 def create_vector_db():
     """
-    Loads all available CV PDFs (Turkish & English),
+    Loads configured CV PDFs (Turkish & English),
     splits them into chunks, and builds a unified FAISS vector index.
     """
-    pdf_files = [
-        "Melih_Eren_cvtr.pdf",       # Turkish CV
-        "Melih_Eren_ATS_CV.pdf",     # English ATS CV
-    ]
+    pdf_files = get_configured_pdfs()
 
     all_documents = []
 
-    for pdf_path in pdf_files:
-        if os.path.exists(pdf_path):
-            print(f"📄 Okunuyor: {pdf_path}")
-            loader = PyPDFLoader(pdf_path)
+    for pdf_name, lang in pdf_files:
+        if not pdf_name:
+            continue
+
+        pdf_path = (APP_ROOT / pdf_name).resolve()
+        try:
+            pdf_path.relative_to(APP_ROOT)
+        except ValueError:
+            print(f"   ⚠️ Atlanıyor (proje dışı dosya yolu): {pdf_name}")
+            continue
+
+        if pdf_path.exists():
+            print(f"📄 Okunuyor: {pdf_path.name}")
+            loader = PyPDFLoader(str(pdf_path))
             docs = loader.load()
-            # Add language metadata to each document
-            lang = "tr" if "cvtr" in pdf_path.lower() else "en"
             for doc in docs:
                 doc.metadata["language"] = lang
-                doc.metadata["source_file"] = pdf_path
+                doc.metadata["source_file"] = pdf_path.name
             all_documents.extend(docs)
             print(f"   ✅ {len(docs)} sayfa okundu.")
         else:
-            print(f"   ⚠️ Atlanıyor (bulunamadı): {pdf_path}")
+            print(f"   ⚠️ Atlanıyor (bulunamadı): {pdf_path.name}")
 
     if not all_documents:
         print("❌ Hiçbir PDF bulunamadı! Lütfen PDF dosyalarını proje klasörüne ekleyin.")
@@ -53,8 +76,9 @@ def create_vector_db():
     vectorstore = FAISS.from_documents(texts, embeddings)
 
     print("💾 Vektör veritabanı kaydediliyor...")
-    vectorstore.save_local("faiss_index")
+    vectorstore.save_local(str(APP_ROOT / "faiss_index"))
     print("✅ İşlem tamam! 'faiss_index' klasörü oluşturuldu/güncellendi.")
+
 
 if __name__ == "__main__":
     create_vector_db()

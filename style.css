@@ -1,280 +1,191 @@
-/* ===== GOOGLE FONT ===== */
+/* ===== FONT ===== */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 /* ===== BASE ===== */
 html, body, [class*="css"] {
     font-family: 'Outfit', sans-serif;
+    letter-spacing: 0;
 }
 
-/* ===== ANIMATED BACKGROUND ===== */
 div.stApp {
-    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a2e);
-    background-size: 400% 400%;
-    animation: gradientShift 20s ease infinite;
+    background:
+        linear-gradient(145deg, rgba(20, 184, 166, 0.08), rgba(245, 158, 11, 0.04)),
+        #0f1115;
+    color: #f6f7f9;
 }
 
-@keyframes gradientShift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+div[data-testid="stAppViewBlockContainer"] {
+    max-width: 1120px;
+    padding-top: 2rem;
 }
 
 /* ===== SIDEBAR ===== */
 section[data-testid="stSidebar"] {
-    background: rgba(17, 25, 40, 0.85) !important;
-    backdrop-filter: blur(20px) saturate(200%);
-    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background: rgba(16, 18, 24, 0.96) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 section[data-testid="stSidebar"] h1 {
-    background: linear-gradient(135deg, #00d2ff 0%, #7b2fef 50%, #ff6b9d 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #f6f7f9;
     font-weight: 700;
-    font-size: 1.8rem !important;
-    letter-spacing: -0.5px;
+    font-size: 1.65rem !important;
+    letter-spacing: 0;
 }
 
-/* Sidebar profile image */
 section[data-testid="stSidebar"] img {
     border-radius: 50%;
-    border: 3px solid rgba(0, 210, 255, 0.4);
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
-    transition: all 0.4s ease;
+    border: 2px solid rgba(20, 184, 166, 0.62);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
-section[data-testid="stSidebar"] img:hover {
-    border-color: rgba(0, 210, 255, 0.8);
-    box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
-    transform: scale(1.05);
-}
-
-/* Sidebar links */
 section[data-testid="stSidebar"] a {
-    color: #a8d8ea !important;
+    color: #8fd8cf !important;
     text-decoration: none;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    display: inline-block;
+    font-weight: 600;
 }
 
 section[data-testid="stSidebar"] a:hover {
-    color: #00d2ff !important;
-    transform: translateX(4px);
+    color: #fbbf24 !important;
 }
 
-/* ===== GLASSMORPHISM CHAT MESSAGES ===== */
-div[data-testid="stChatMessage"] {
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #ffffff;
-    padding: 1rem;
-    margin-bottom: 0.75rem;
-    transition: all 0.3s ease;
-}
-
-div[data-testid="stChatMessage"]:hover {
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* User messages */
-div[data-testid="stChatMessage"][data-testid="user"] {
-    background: rgba(0, 210, 255, 0.08);
-    border-left: 3px solid #00d2ff;
-}
-
-/* Assistant messages */
-div[data-testid="stChatMessage"][data-testid="assistant"] {
-    background: rgba(123, 47, 239, 0.08);
-    border-left: 3px solid #7b2fef;
-}
-
-/* ===== BUTTONS ===== */
-div.stButton > button {
-    background: rgba(255, 255, 255, 0.04) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 12px;
-    padding: 0.7rem 1.2rem;
-    font-weight: 500;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
-}
-
-div.stButton > button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.15), transparent);
-    transition: left 0.5s ease;
-}
-
-div.stButton > button:hover {
-    background: linear-gradient(135deg, rgba(0, 210, 255, 0.2), rgba(123, 47, 239, 0.2)) !important;
-    border-color: rgba(0, 210, 255, 0.4) !important;
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.25), 0 0 40px rgba(123, 47, 239, 0.1);
-    transform: translateY(-2px);
-    font-weight: 600;
-}
-
-div.stButton > button:hover::before {
-    left: 100%;
-}
-
-div.stButton > button:active {
-    transform: translateY(0px);
-}
-
-/* Download button special style */
-div.stDownloadButton > button {
-    background: linear-gradient(135deg, rgba(0, 210, 255, 0.15), rgba(123, 47, 239, 0.15)) !important;
-    border: 1px solid rgba(0, 210, 255, 0.3) !important;
-    border-radius: 12px;
-    color: #ffffff !important;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-div.stDownloadButton > button:hover {
-    background: linear-gradient(135deg, rgba(0, 210, 255, 0.3), rgba(123, 47, 239, 0.3)) !important;
-    box-shadow: 0 0 25px rgba(0, 210, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-/* ===== HEADERS & TEXT ===== */
+/* ===== TYPOGRAPHY ===== */
 h1, h2, h3 {
-    color: #ffffff;
+    color: #f6f7f9;
     font-weight: 700;
+    letter-spacing: 0;
 }
 
-/* Main title gradient */
 div[data-testid="stAppViewBlockContainer"] > div:first-child h1 {
-    background: linear-gradient(135deg, #00d2ff, #7b2fef, #ff6b9d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 2.5rem !important;
-    font-weight: 700;
+    color: #f6f7f9;
+    font-size: 2.35rem !important;
     text-align: center;
-    letter-spacing: -1px;
+    letter-spacing: 0;
+}
+
+p, li, label, span {
+    letter-spacing: 0;
 }
 
 a {
-    color: #00d2ff !important;
+    color: #8fd8cf !important;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #7b2fef !important;
+    color: #fbbf24 !important;
 }
 
-/* ===== CHAT INPUT ===== */
+/* ===== CHAT ===== */
+div[data-testid="stChatMessage"] {
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 3px solid rgba(20, 184, 166, 0.82);
+    border-radius: 8px;
+    color: #f6f7f9;
+    padding: 0.95rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+div[data-testid="stChatMessage"] p {
+    line-height: 1.55;
+}
+
 div[data-testid="stChatInput"] {
     background-color: transparent !important;
 }
 
 textarea[data-testid="stChatInputTextArea"] {
-    background-color: rgba(0, 0, 0, 0.35) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    color: white !important;
-    border-radius: 14px;
+    background-color: rgba(8, 10, 14, 0.82) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    color: #f6f7f9 !important;
+    border-radius: 8px;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    letter-spacing: 0;
 }
 
 textarea[data-testid="stChatInputTextArea"]:focus {
-    border-color: #00d2ff !important;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.25), 0 0 30px rgba(0, 210, 255, 0.1);
+    border-color: #14b8a6 !important;
+    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.16);
 }
 
-/* ===== TABS ===== */
+/* ===== BUTTONS ===== */
+div.stButton > button,
+div.stDownloadButton > button {
+    min-height: 2.7rem;
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #f6f7f9 !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+div.stButton > button:hover,
+div.stDownloadButton > button:hover {
+    background: rgba(20, 184, 166, 0.18) !important;
+    border-color: rgba(20, 184, 166, 0.72) !important;
+    transform: translateY(-1px);
+}
+
+div.stButton > button:active,
+div.stDownloadButton > button:active {
+    transform: translateY(0);
+}
+
+/* ===== TABS & EXPANDERS ===== */
 div[data-testid="stTabs"] button[data-baseweb="tab"] {
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 500;
-    transition: color 0.3s ease;
+    color: rgba(246, 247, 249, 0.66);
+    font-weight: 600;
+    letter-spacing: 0;
 }
 
 div[data-testid="stTabs"] button[aria-selected="true"] {
-    color: #00d2ff !important;
-    border-bottom-color: #00d2ff !important;
-    font-weight: 700;
+    color: #8fd8cf !important;
+    border-bottom-color: #14b8a6 !important;
 }
 
-/* ===== EXPANDER ===== */
 div[data-testid="stExpander"] {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.045);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
-div[data-testid="stExpander"]:hover {
-    border-color: rgba(0, 210, 255, 0.2);
+div[data-testid="stAlert"] {
+    border-radius: 8px;
 }
 
-/* ===== DIVIDER ===== */
-hr {
-    border-color: rgba(255, 255, 255, 0.08) !important;
-    margin: 1rem 0;
+/* ===== FORM ELEMENTS ===== */
+input, textarea {
+    border-radius: 8px !important;
+    letter-spacing: 0;
 }
 
-/* ===== RADIO BUTTONS ===== */
 div[data-testid="stRadio"] label {
-    color: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(246, 247, 249, 0.86) !important;
     font-weight: 500;
 }
 
-/* ===== SPINNER ===== */
-div[data-testid="stSpinner"] {
-    color: #00d2ff !important;
+hr {
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    margin: 1rem 0;
 }
 
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
-    width: 6px;
-    background: transparent;
+    width: 8px;
+    background: rgba(255, 255, 255, 0.04);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #00d2ff, #7b2fef);
-    border-radius: 10px;
+    background: rgba(20, 184, 166, 0.52);
+    border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #00b8e6, #6a23d6);
-}
-
-/* ===== ALERTS & INFO BOXES ===== */
-div[data-testid="stAlert"] {
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-div[data-testid="stChatMessage"] {
-    animation: fadeInUp 0.4s ease-out;
+    background: rgba(245, 158, 11, 0.72);
 }

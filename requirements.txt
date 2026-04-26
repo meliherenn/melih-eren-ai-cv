@@ -1,9 +1,11 @@
-streamlit
-openai
-langchain
-langchain-community
-langchain-text-splitters
-faiss-cpu
-pypdf
-tiktoken
-sentence-transformers
+streamlit>=1.37,<2
+openai>=1.40,<3
+langchain>=0.2,<2
+langchain-community>=0.2,<1
+langchain-text-splitters>=0.2,<2
+faiss-cpu>=1.8,<2
+pypdf>=4,<7
+tiktoken>=0.7,<1
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+sentence-transformers>=3,<4
