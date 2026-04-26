@@ -8,7 +8,7 @@ Live demo: [melih-eren-ai-cv.streamlit.app](https://melih-eren-ai-cv.streamlit.a
 
 | Feature | Description |
 | --- | --- |
-| AI Chat | Uses a configurable LLM provider. Default preset: Cerebras with `gpt-oss-120b`. |
+| AI Chat | Uses a configurable LLM provider. Default preset: Cerebras with `llama3.1-8b`. |
 | Safe Offline Mode | If no API key is configured, the app still answers common portfolio questions from verified local data. |
 | Prompt Injection Guardrails | Blocks requests for hidden prompts, system instructions, API keys, passwords, tokens, and jailbreak-style instructions before the LLM call. |
 | RAG | FAISS + sentence-transformers retrieve relevant CV context by language. |
@@ -41,7 +41,7 @@ Edit `.streamlit/secrets.toml`:
 
 ```toml
 LLM_PROVIDER = "cerebras"
-LLM_MODEL = "gpt-oss-120b"
+LLM_MODEL = "llama3.1-8b"
 CEREBRAS_API_KEY = "your-cerebras-api-key"
 ADMIN_PASSWORD = "your-strong-admin-password"
 ```
@@ -61,6 +61,13 @@ streamlit run app.py
 ## Provider Configuration
 
 The app defaults to Cerebras. You can switch providers without changing code:
+
+```toml
+# Cerebras larger preview model shown in your dashboard
+LLM_PROVIDER = "cerebras"
+LLM_MODEL = "qwen-3-235b-a22b-instruct-2507"
+CEREBRAS_API_KEY = "your-cerebras-key"
+```
 
 ```toml
 # Groq example

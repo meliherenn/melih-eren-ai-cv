@@ -27,7 +27,7 @@ PROVIDER_CONFIGS = {
     "cerebras": {
         "base_url": "https://api.cerebras.ai/v1",
         "api_key_names": ("CEREBRAS_API_KEY",),
-        "default_model": "gpt-oss-120b",
+        "default_model": "llama3.1-8b",
     },
     "groq": {
         "base_url": "https://api.groq.com/openai/v1",
