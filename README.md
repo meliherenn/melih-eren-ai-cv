@@ -1,6 +1,6 @@
 # Melih Eren | AI Portfolio
 
-[![CI](https://github.com/meliherenn/melih-eren-ai-cv/actions/workflows/ci.yml/badge.svg)](https://github.com/meliherenn/melih-eren-ai-cv/actions/workflows/ci.yml)
+[![CI](https://github.com/meliherenn/melih-eren-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/meliherenn/melih-eren-ai/actions/workflows/ci.yml)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](runtime.txt)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.60-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-49d6c2.svg)](LICENSE)
@@ -9,7 +9,7 @@ A bilingual, recruiter-focused portfolio for **Melih Eren**, a Junior Android & 
 Software Engineering student graduating in **January 2027**. The app combines a polished Streamlit UI,
 verified portfolio data, local CV retrieval and a safe offline fallback.
 
-> Deployment note: the current [Streamlit deployment](https://melih-eren-ai-cv.streamlit.app/) redirects to
+> Deployment note: the current [Streamlit deployment](https://melih-eren-ai.streamlit.app/) redirects to
 > viewer authentication. Make the app public in Streamlit sharing settings before sending it to recruiters.
 
 ![AI portfolio preview](assets/app-preview.png)
@@ -49,8 +49,8 @@ Retrieval metadata is stored as JSON. The application does **not** deserialize P
 Python 3.11 is recommended and pinned for deployment.
 
 ```bash
-git clone https://github.com/meliherenn/melih-eren-ai-cv.git
-cd melih-eren-ai-cv
+git clone https://github.com/meliherenn/melih-eren-ai.git
+cd melih-eren-ai
 
 python -m venv .venv
 source .venv/bin/activate
