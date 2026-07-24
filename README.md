@@ -1,30 +1,52 @@
-# Melih Eren | AI Portfolio Chatbot
+# Melih Eren | AI Portfolio
 
-Interactive Streamlit portfolio chatbot with bilingual CV data, FAISS retrieval, a configurable OpenAI-compatible LLM provider, and deterministic safety guardrails for secrets, prompt injection, and missing API keys.
+[![CI](https://github.com/meliherenn/melih-eren-ai-cv/actions/workflows/ci.yml/badge.svg)](https://github.com/meliherenn/melih-eren-ai-cv/actions/workflows/ci.yml)
+[![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)](runtime.txt)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.60-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-49d6c2.svg)](LICENSE)
 
-Live demo: [melih-eren-ai-cv.streamlit.app](https://melih-eren-ai-cv.streamlit.app)
+A bilingual, recruiter-focused portfolio for **Melih Eren**, a Junior Android & Flutter Developer and
+Software Engineering student graduating in **January 2027**. The app combines a polished Streamlit UI,
+verified portfolio data, local CV retrieval and a safe offline fallback.
 
-## Features
+> Deployment note: the current [Streamlit deployment](https://melih-eren-ai-cv.streamlit.app/) redirects to
+> viewer authentication. Make the app public in Streamlit sharing settings before sending it to recruiters.
 
-| Feature | Description |
+![AI portfolio preview](assets/app-preview.png)
+
+## What makes this project different
+
+| Capability | Implementation |
 | --- | --- |
-| AI Chat | Uses a configurable LLM provider. Default preset: Cerebras with `llama3.1-8b`. |
-| Safe Offline Mode | If no API key is configured, the app still answers common portfolio questions from verified local data. |
-| Prompt Injection Guardrails | Blocks requests for hidden prompts, system instructions, API keys, passwords, tokens, and jailbreak-style instructions before the LLM call. |
-| RAG | FAISS + sentence-transformers retrieve relevant CV context by language. |
-| Bilingual UI | Turkish and English profile data, prompts, buttons, and CV downloads. |
-| Admin Panel | Password-protected local editor for profile, experience, projects, skills, and certificates. |
+| Recruiter-ready portfolio | Featured mobile projects, verified links, concise experience and one-page Turkish/English CV downloads |
+| Bilingual experience | Complete Turkish and English UI, data, quick actions and retrieval metadata |
+| Local RAG | Multilingual sentence-transformer embeddings with a direct FAISS cosine-similarity index |
+| Safe offline mode | Useful deterministic answers without an API key, network call or invented portfolio fact |
+| Provider flexibility | Cerebras, Groq, Gemini or another HTTPS OpenAI-compatible endpoint |
+| Defense in depth | Input limits, secret redaction, common prompt-injection checks, output redaction and per-session live-request limits |
+| Verified artifacts | Schema-validated JSON, one-page CV checks and checksummed FAISS/JSON retrieval files |
+| Automated quality | Ruff, pytest, artifact validation, dependency updates and GitHub Actions CI |
 
-## Tech Stack
+## Architecture
 
-- Streamlit
-- OpenAI Python SDK for OpenAI-compatible APIs
-- Cerebras, Groq, or Gemini provider presets
-- LangChain + FAISS
-- sentence-transformers
-- Python standard-library unit tests for guardrails
+```mermaid
+flowchart LR
+    U[Recruiter question] --> G[Deterministic guardrails]
+    G -->|Blocked request| R[Safe refusal]
+    G -->|No API key| O[Verified offline answer]
+    G -->|Live provider enabled| E[Multilingual embedding]
+    E --> F[Checksummed FAISS index]
+    F --> C[Relevant CV context]
+    C --> L[OpenAI-compatible LLM]
+    L --> X[Credential redaction]
+    X --> A[Answer]
+```
 
-## Setup
+Retrieval metadata is stored as JSON. The application does **not** deserialize Python pickle files.
+
+## Run locally
+
+Python 3.11 is recommended and pinned for deployment.
 
 ```bash
 git clone https://github.com/meliherenn/melih-eren-ai-cv.git
@@ -32,108 +54,104 @@ cd melih-eren-ai-cv
 
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 
-cp .streamlit/secrets.toml.example .streamlit/secrets.toml
-```
-
-Edit `.streamlit/secrets.toml`:
-
-```toml
-LLM_PROVIDER = "cerebras"
-LLM_MODEL = "llama3.1-8b"
-CEREBRAS_API_KEY = "your-cerebras-api-key"
-ADMIN_PASSWORD = "your-strong-admin-password"
-```
-
-Build or refresh the vector database:
-
-```bash
-python build_vector_db.py
-```
-
-Run locally:
-
-```bash
 streamlit run app.py
 ```
 
-## Provider Configuration
-
-The app defaults to Cerebras. You can switch providers without changing code:
-
-```toml
-# Cerebras larger preview model shown in your dashboard
-LLM_PROVIDER = "cerebras"
-LLM_MODEL = "qwen-3-235b-a22b-instruct-2507"
-CEREBRAS_API_KEY = "your-cerebras-key"
-```
-
-```toml
-# Groq example
-LLM_PROVIDER = "groq"
-LLM_MODEL = "llama-3.3-70b-versatile"
-GROQ_API_KEY = "your-groq-key"
-```
-
-```toml
-# Gemini OpenAI-compatible example
-LLM_PROVIDER = "gemini"
-LLM_MODEL = "gemini-2.5-flash-lite"
-GEMINI_API_KEY = "your-gemini-key"
-```
-
-For any OpenAI-compatible endpoint:
-
-```toml
-LLM_BASE_URL = "https://provider.example/v1"
-LLM_API_KEY = "your-provider-key"
-LLM_MODEL = "provider-model-id"
-```
-
-## Security Notes
-
-- Never commit `.streamlit/secrets.toml`, `.env`, API keys, or admin passwords.
-- The app refuses to reveal or invent credentials, even if a user asks directly.
-- Retrieved CV text is treated as evidence only, not as executable instructions.
-- `faiss_index/index.pkl` is a trusted local artifact. Regenerate it with `python build_vector_db.py` after changing CV PDFs.
-- Use Python 3.11 for deployment. `runtime.txt` pins this for Streamlit-style platforms and avoids unnecessary Python 3.14 ML package churn.
-
-## Tests
+No secret is required for the offline portfolio. To enable live AI answers:
 
 ```bash
-python -m unittest discover -s tests
-python -m py_compile app.py build_vector_db.py guardrails.py
+cp .streamlit/secrets.toml.example .streamlit/secrets.toml
 ```
 
-## Project Structure
+Then add a provider key to the local file:
+
+```toml
+LLM_PROVIDER = "cerebras"
+LLM_MODEL = "gpt-oss-120b"
+CEREBRAS_API_KEY = "your-key"
+```
+
+The secrets file is ignored by Git.
+
+## Configuration
+
+| Setting | Default | Purpose |
+| --- | --- | --- |
+| `LLM_PROVIDER` | `cerebras` | Provider preset: `cerebras`, `groq` or `gemini` |
+| `LLM_MODEL` | Provider default | Model ID sent to the configured provider |
+| `LLM_BASE_URL` | Provider endpoint | Optional OpenAI-compatible HTTPS endpoint; HTTP is accepted only for localhost |
+| `LLM_API_KEY` | unset | Generic provider key; provider-specific keys are also supported |
+| `MAX_INPUT_CHARS` | `1200` | Maximum normalized user-input length |
+| `MAX_LIVE_REQUESTS_PER_SESSION` | `20` | Per-session live-model request budget before offline fallback |
+| `ENABLE_ADMIN_PANEL` | `false` | Enables the editor only when a password is also configured |
+| `ADMIN_PASSWORD` | unset | Password for the optional trusted-deployment editor |
+
+See [.streamlit/secrets.toml.example](.streamlit/secrets.toml.example) and
+[.env.example](.env.example) for complete examples.
+
+## Rebuild retrieval artifacts
+
+Run this whenever `data.json` or either CV changes:
+
+```bash
+python build_vector_db.py
+python scripts/validate_project.py
+```
+
+The build reads both one-page CVs and structured bilingual data, creates normalized multilingual embeddings,
+writes a FAISS index plus JSON metadata, and records SHA-256 checksums.
+
+## Quality checks
+
+```bash
+python -m pip install -r requirements-dev.txt
+ruff check .
+ruff format --check .
+pytest
+python scripts/validate_project.py
+python -m py_compile app.py build_vector_db.py guardrails.py portfolio_core.py scripts/validate_project.py
+```
+
+CI runs the same checks on every push and pull request.
+
+## Project layout
 
 ```text
-cv-bot/
-├── app.py
-├── guardrails.py
-├── build_vector_db.py
-├── data.json
-├── style.css
-├── runtime.txt
-├── tests/
-│   └── test_guardrails.py
-├── .streamlit/
-│   ├── config.toml
-│   └── secrets.toml.example
+.
+├── app.py                         # Streamlit interface and provider orchestration
+├── portfolio_core.py              # Validation, safe URLs and artifact integrity
+├── guardrails.py                  # Input policy, redaction and offline answers
+├── build_vector_db.py             # Pickle-free multilingual FAISS build
+├── data.json                      # Verified Turkish and English portfolio data
 ├── faiss_index/
-├── Melih_Eren_cvtr.pdf
-└── Melih_Eren_ATS_CV.pdf
+│   ├── index.faiss
+│   ├── documents.json
+│   └── checksums.json
+├── Melih_Eren_ATS_CV.pdf          # English one-page ATS CV
+├── Melih_Eren_cvtr.pdf            # Turkish one-page ATS CV
+├── scripts/validate_project.py
+├── tests/
+└── .github/
+    ├── workflows/ci.yml
+    └── dependabot.yml
 ```
+
+## Security
+
+Please read [SECURITY.md](SECURITY.md) before deploying. Never commit `.env`,
+`.streamlit/secrets.toml`, API keys or admin passwords. The admin editor is intentionally disabled on public
+deployments unless both its feature flag and password are set.
 
 ## Author
 
-Melih Eren — Software Engineering Student @ Halic University
-
-- GitHub: [meliherenn](https://github.com/meliherenn)
-- LinkedIn: [melih-eren](https://www.linkedin.com/in/meliheren/)
-- Email: meliheren2834@gmail.com
+**Melih Eren** — Junior Android & Flutter Developer<br>
+[GitHub](https://github.com/meliherenn) ·
+[LinkedIn](https://www.linkedin.com/in/meliheren/) ·
+[Email](mailto:meliheren2834@gmail.com)
 
 ## License
 
-MIT License
+[MIT](LICENSE)

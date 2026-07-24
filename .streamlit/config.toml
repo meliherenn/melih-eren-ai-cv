@@ -1,7 +1,12 @@
 [theme]
-base="dark"
-primaryColor="#00d2ff"
-backgroundColor="#0e1117"
-secondaryBackgroundColor="#1a1a2e"
-textColor="#fafafa"
-font="sans serif"
+base = "dark"
+primaryColor = "#49d6c2"
+backgroundColor = "#0b1018"
+secondaryBackgroundColor = "#111a26"
+textColor = "#f4f8fc"
+font = "sans serif"
+
+[server]
+# Transformers exposes many lazy modules; disabling source watching avoids
+# expensive imports of optional vision packages in production.
+fileWatcherType = "none"

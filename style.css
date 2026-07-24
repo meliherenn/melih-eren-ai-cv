@@ -1,95 +1,129 @@
-/* ===== FONT ===== */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+:root {
+    --surface: #0b1018;
+    --panel: rgba(18, 28, 41, 0.82);
+    --border: rgba(165, 188, 217, 0.18);
+    --text: #f4f8fc;
+    --muted: #adbbcb;
+    --accent: #49d6c2;
+    --focus: #f5bd4f;
+}
 
-/* ===== BASE ===== */
-html, body, [class*="css"] {
-    font-family: 'Outfit', sans-serif;
+html,
+body,
+[class*="css"] {
+    font-family: Inter, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     letter-spacing: 0;
 }
 
 div.stApp {
+    color: var(--text);
     background:
-        linear-gradient(145deg, rgba(20, 184, 166, 0.08), rgba(245, 158, 11, 0.04)),
-        #0f1115;
-    color: #f6f7f9;
+        radial-gradient(circle at 80% 2%, rgba(73, 214, 194, 0.12), transparent 28rem),
+        radial-gradient(circle at 5% 90%, rgba(84, 132, 255, 0.08), transparent 26rem),
+        var(--surface);
 }
 
 div[data-testid="stAppViewBlockContainer"] {
-    max-width: 1120px;
-    padding-top: 2rem;
+    max-width: 1160px;
+    padding-top: 2.2rem;
+    padding-bottom: 5rem;
 }
 
-/* ===== SIDEBAR ===== */
 section[data-testid="stSidebar"] {
-    background: rgba(16, 18, 24, 0.96) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(9, 15, 23, 0.98) !important;
+    border-right: 1px solid var(--border);
 }
 
 section[data-testid="stSidebar"] h1 {
-    color: #f6f7f9;
-    font-weight: 700;
-    font-size: 1.65rem !important;
-    letter-spacing: 0;
+    color: var(--text);
+    font-size: 1.55rem !important;
+    font-weight: 750;
+    text-align: center;
 }
 
-section[data-testid="stSidebar"] img {
+section[data-testid="stSidebar"] div[data-testid="stImage"] {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 0.8rem;
+    overflow: hidden;
+    border: 2px solid rgba(73, 214, 194, 0.7);
     border-radius: 50%;
-    border: 2px solid rgba(20, 184, 166, 0.62);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
-section[data-testid="stSidebar"] a {
-    color: #8fd8cf !important;
-    text-decoration: none;
-    font-weight: 600;
+section[data-testid="stSidebar"] div[data-testid="stImage"] img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+    object-fit: cover !important;
+    object-position: center 18% !important;
+    transform: scale(1.55);
 }
 
-section[data-testid="stSidebar"] a:hover {
-    color: #fbbf24 !important;
+section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
+    color: var(--muted);
+    text-align: center;
 }
 
-/* ===== TYPOGRAPHY ===== */
-h1, h2, h3 {
-    color: #f6f7f9;
-    font-weight: 700;
-    letter-spacing: 0;
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text);
+    font-weight: 720;
+    letter-spacing: -0.02em;
 }
 
 div[data-testid="stAppViewBlockContainer"] > div:first-child h1 {
-    color: #f6f7f9;
-    font-size: 2.35rem !important;
+    margin-bottom: 0.2rem;
+    font-size: clamp(2rem, 5vw, 3rem) !important;
     text-align: center;
-    letter-spacing: 0;
 }
 
-p, li, label, span {
+p,
+li,
+label,
+span {
     letter-spacing: 0;
 }
 
 a {
-    color: #8fd8cf !important;
+    color: #79e3d4 !important;
+    font-weight: 650;
     text-decoration: none;
-    font-weight: 600;
 }
 
 a:hover {
-    color: #fbbf24 !important;
+    color: var(--focus) !important;
 }
 
-/* ===== CHAT ===== */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    height: 100%;
+    background: linear-gradient(155deg, rgba(27, 42, 58, 0.78), rgba(14, 23, 34, 0.92));
+    border-color: var(--border) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+    transition: border-color 160ms ease, transform 160ms ease;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+    border-color: rgba(73, 214, 194, 0.45) !important;
+    transform: translateY(-2px);
+}
+
 div[data-testid="stChatMessage"] {
-    background: rgba(255, 255, 255, 0.055);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-left: 3px solid rgba(20, 184, 166, 0.82);
-    border-radius: 8px;
-    color: #f6f7f9;
-    padding: 0.95rem;
-    margin-bottom: 0.75rem;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+    margin-bottom: 0.7rem;
+    padding: 0.9rem 1rem;
+    color: var(--text);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-left: 3px solid rgba(73, 214, 194, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
 }
 
 div[data-testid="stChatMessage"] p {
-    line-height: 1.55;
+    line-height: 1.6;
 }
 
 div[data-testid="stChatInput"] {
@@ -97,95 +131,107 @@ div[data-testid="stChatInput"] {
 }
 
 textarea[data-testid="stChatInputTextArea"] {
-    background-color: rgba(8, 10, 14, 0.82) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: #f6f7f9 !important;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    letter-spacing: 0;
+    color: var(--text) !important;
+    background: rgba(9, 15, 23, 0.96) !important;
+    border: 1px solid rgba(165, 188, 217, 0.28) !important;
+    border-radius: 12px;
 }
 
 textarea[data-testid="stChatInputTextArea"]:focus {
-    border-color: #14b8a6 !important;
-    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.16);
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 3px rgba(73, 214, 194, 0.14);
 }
 
-/* ===== BUTTONS ===== */
 div.stButton > button,
-div.stDownloadButton > button {
+div.stDownloadButton > button,
+div[data-testid="stLinkButton"] > a {
     min-height: 2.7rem;
-    background: rgba(255, 255, 255, 0.06) !important;
-    color: #f6f7f9 !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    border-radius: 8px;
-    padding: 0.65rem 1rem;
-    font-weight: 600;
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.055) !important;
+    border: 1px solid rgba(165, 188, 217, 0.25) !important;
+    border-radius: 10px;
     font-size: 0.9rem;
-    letter-spacing: 0;
-    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    font-weight: 650;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 div.stButton > button:hover,
-div.stDownloadButton > button:hover {
-    background: rgba(20, 184, 166, 0.18) !important;
-    border-color: rgba(20, 184, 166, 0.72) !important;
+div.stDownloadButton > button:hover,
+div[data-testid="stLinkButton"] > a:hover {
+    color: var(--text) !important;
+    background: rgba(73, 214, 194, 0.14) !important;
+    border-color: rgba(73, 214, 194, 0.65) !important;
     transform: translateY(-1px);
 }
 
-div.stButton > button:active,
-div.stDownloadButton > button:active {
-    transform: translateY(0);
+div.stButton > button:focus-visible,
+div.stDownloadButton > button:focus-visible,
+div[data-testid="stLinkButton"] > a:focus-visible {
+    outline: 3px solid rgba(245, 189, 79, 0.75);
+    outline-offset: 2px;
 }
 
-/* ===== TABS & EXPANDERS ===== */
+div[data-testid="stExpander"],
+div[data-testid="stAlert"] {
+    overflow: hidden;
+    background: rgba(18, 28, 41, 0.64);
+    border-color: var(--border);
+    border-radius: 12px;
+}
+
 div[data-testid="stTabs"] button[data-baseweb="tab"] {
-    color: rgba(246, 247, 249, 0.66);
-    font-weight: 600;
-    letter-spacing: 0;
+    color: var(--muted);
+    font-weight: 650;
 }
 
 div[data-testid="stTabs"] button[aria-selected="true"] {
-    color: #8fd8cf !important;
-    border-bottom-color: #14b8a6 !important;
+    color: #79e3d4 !important;
+    border-bottom-color: var(--accent) !important;
 }
 
-div[data-testid="stExpander"] {
-    background: rgba(255, 255, 255, 0.045);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-}
-
-div[data-testid="stAlert"] {
-    border-radius: 8px;
-}
-
-/* ===== FORM ELEMENTS ===== */
-input, textarea {
-    border-radius: 8px !important;
-    letter-spacing: 0;
+input,
+textarea {
+    border-radius: 10px !important;
 }
 
 div[data-testid="stRadio"] label {
-    color: rgba(246, 247, 249, 0.86) !important;
-    font-weight: 500;
+    color: rgba(244, 248, 252, 0.9) !important;
 }
 
 hr {
-    border-color: rgba(255, 255, 255, 0.09) !important;
-    margin: 1rem 0;
+    margin: 1.1rem 0;
+    border-color: rgba(165, 188, 217, 0.14) !important;
 }
 
-/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
     width: 8px;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(20, 184, 166, 0.52);
+    background: rgba(73, 214, 194, 0.46);
     border-radius: 8px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(245, 158, 11, 0.72);
+@media (max-width: 760px) {
+    div[data-testid="stAppViewBlockContainer"] {
+        padding-top: 1.1rem;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        gap: 0.65rem;
+    }
+
+    div[data-testid="stVerticalBlockBorderWrapper"] {
+        margin-bottom: 0.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
 }

@@ -1,0 +1,144 @@
+[
+  {
+    "text": "Ben Melih Eren. Ocak 2027'de mezun olması beklenen Haliç Üniversitesi Yazılım Mühendisliği öğrencisiyim. Kotlin/Jetpack Compose ve Flutter/Dart ile Android, Android TV ve çok platformlu mobil uygulamalar geliştiriyorum. REST API, Firebase, çevrimdışı veri saklama, medya oynatma, test ve Google Play yayın süreçlerinde uygulamalı deneyime sahibim.\nEducation: Haliç Üniversitesi Yazılım Mühendisliği Lisans, 2021 - devam. Beklenen mezuniyet: Ocak 2027.\nStrengths: Mobil uygulamaları yalnızca arayüz seviyesinde değil; mimari, veri, güvenlik, test ve yayın süreçleriyle birlikte ele alıyorum. Kotlin/Jetpack Compose ve Flutter/Dart projelerim, Android TV ve medya oynatma deneyimim ve farklı ekiplerde",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "alıyorum. Kotlin/Jetpack Compose ve Flutter/Dart projelerim, Android TV ve medya oynatma deneyimim ve farklı ekiplerde tamamladığım stajlar hızlı öğrenme ve uygulama yeteneğimi gösteriyor.\nExperience:\nFlutter Developer Intern | Rubikpara | Temmuz 2025 - Ağustos 2025: Flutter arayüzleri, REST API entegrasyonları, uygulama içi veri akışları ve fintech form bileşenleri geliştirdim; hata giderme ve UI/performans iyileştirmeleri yaptım.\nCore Team Member | Huawei Student Developers Türkiye | Kasım 2025 - devam: Geliştirici etkinlikleri, teknik oturumlar, bilgi paylaşımı ve topluluk projelerine katkı sağlıyorum.\nAI & Data Analytics Trainee | Yapay Zeka ve Teknoloji Akademisi (Google Destekli) |",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "luluk projelerine katkı sağlıyorum.\nAI & Data Analytics Trainee | Yapay Zeka ve Teknoloji Akademisi (Google Destekli) | Aralık 2024 - Kasım 2025: SQL, veri analizi ve makine öğrenmesi temellerini gerçek veri setleri ve final projesinde uyguladım.\nYazılım Stajları | Social Office, Payolog, Bilsoft Yazılım | Temmuz 2024 - Haziran 2025: Python, C#/.NET, SQL Server, UI geliştirme, hata ayıklama ve versiyon kontrolü üzerinde çalıştım.\nProjects:\nIdealPlayer: Kullanıcının sağladığı M3U/M3U8 ve Xtream kaynakları için XMLTV EPG, canlı/VOD/dizi ekranları, arama, favoriler, geçmiş, Picture-in-Picture ve Android TV D-pad navigasyonu içeren mobil/TV medya oynatıcı. Stack: Kotlin, Jetpack Compose,",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "miş, Picture-in-Picture ve Android TV D-pad navigasyonu içeren mobil/TV medya oynatıcı. Stack: Kotlin, Jetpack Compose, Android TV, MVVM, Room, Hilt, Media3. URL: https://github.com/meliherenn/IdealPlayer\nBioDietix: Desteklenen kan testi ve alerji PDF'lerini işleyen; barkodla taranan ürünleri profil, alerji, BMI ve besin etiketi sinyallerine göre değerlendiren iki dilli beslenme destek uygulaması. Stack: Flutter, Dart, FastAPI, Firebase, Hive, Python. URL: https://github.com/meliherenn/BioDietix\nAI Portfolio Chatbot: İki dilli portfolyo verisi, FAISS tabanlı CV retrieval, yapılandırılabilir OpenAI-uyumlu sağlayıcılar, çevrimdışı yanıtlar ve deterministik güvenlik kuralları içeren bu",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "ieval, yapılandırılabilir OpenAI-uyumlu sağlayıcılar, çevrimdışı yanıtlar ve deterministik güvenlik kuralları içeren bu uygulama. Stack: Python, Streamlit, FAISS, sentence-transformers, OpenAI SDK. URL: https://github.com/meliherenn/melih-eren-ai-cv\nExpense Tracker: Gelir-gider takibi, Hive ile çevrimdışı saklama ve dashboard analitiği içeren Flutter uygulaması. Stack: Flutter, Dart, Hive, Material 3. URL: https://github.com/meliherenn/Expense-Tracker\nRecipe App: Tarif arama, kategori filtreleme ve favori yönetimi içeren Flutter keşif uygulaması. Stack: Flutter, Dart, Material 3. URL: https://github.com/meliherenn/Recipe-App\nE-Commerce UI: Ürün kataloğu, favoriler, sepet akışı ve",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "Dart, Material 3. URL: https://github.com/meliherenn/Recipe-App\nE-Commerce UI: Ürün kataloğu, favoriler, sepet akışı ve doğrulamalı formlar içeren modern Flutter e-ticaret arayüzü. Stack: Flutter, Dart, Material 3. URL: https://github.com/meliherenn/e-ticaret-ui\nSkills:\nMobil: Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV\nMimari ve durum yönetimi: MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines\nVeri ve API: REST, FastAPI, Retrofit, OkHttp, Firebase Auth, App Check, Firestore, Room, DataStore, Hive\nMedya: Media3/ExoPlayer, LibVLC, XMLTV, M3U/Xtream, Picture-in-Picture\nTest ve yayın: Unit test, lint, GitHub Actions, Gradle, Google Play Console\nEk: Python,",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "M3U/Xtream, Picture-in-Picture\nTest ve yayın: Unit test, lint, GitHub Actions, Gradle, Google Play Console\nEk: Python, C#, .NET, SQL, Microsoft SQL Server, Linux",
+    "language": "tr",
+    "source_file": "data.json"
+  },
+  {
+    "text": "I am Melih Eren, a Software Engineering student at Haliç University with an expected graduation date of January 2027. I build Android, Android TV and cross-platform mobile applications with Kotlin/Jetpack Compose and Flutter/Dart. I have hands-on experience with REST APIs, Firebase, offline persistence, media playback, testing and Google Play release workflows.\nEducation: B.Sc. in Software Engineering at Haliç University, 2021 - present. Expected graduation: January 2027.\nStrengths: I approach mobile development beyond the UI layer, covering architecture, data, security, testing and release workflows. My Kotlin/Jetpack Compose and Flutter/Dart projects, Android TV and media playback work,",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "testing and release workflows. My Kotlin/Jetpack Compose and Flutter/Dart projects, Android TV and media playback work, and internships across different teams demonstrate practical execution and continuous learning.\nExperience:\nFlutter Developer Intern | Rubikpara | July 2025 - August 2025: Built Flutter interfaces, REST integrations, in-app data flows and fintech form components; resolved defects and improved UI quality and performance.\nCore Team Member | Huawei Student Developers Türkiye | November 2025 - present: Contribute to developer events, technical sessions, knowledge sharing and community projects.\nAI & Data Analytics Trainee | Artificial Intelligence and Technology Academy",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "knowledge sharing and community projects.\nAI & Data Analytics Trainee | Artificial Intelligence and Technology Academy (Google Supported) | December 2024 - November 2025: Applied SQL, data analysis and machine-learning fundamentals to real datasets and a final project.\nSoftware Internships | Social Office, Payolog, Bilsoft Software | July 2024 - June 2025: Worked with Python, C#/.NET, SQL Server, UI development, debugging and version control.\nProjects:\nIdealPlayer: Android mobile/TV player for user-provided M3U/M3U8 and Xtream sources, featuring XMLTV EPG, live/VOD/series browsing, search, favorites, history, Picture-in-Picture and TV D-pad navigation. Stack: Kotlin, Jetpack Compose,",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "eries browsing, search, favorites, history, Picture-in-Picture and TV D-pad navigation. Stack: Kotlin, Jetpack Compose, Android TV, MVVM, Room, Hilt, Media3. URL: https://github.com/meliherenn/IdealPlayer\nBioDietix: Bilingual nutrition-support app that processes supported blood-test/allergy PDFs and evaluates barcode-scanned products using profile, allergy, BMI and nutrition-label signals. Stack: Flutter, Dart, FastAPI, Firebase, Hive, Python. URL: https://github.com/meliherenn/BioDietix\nAI Portfolio Chatbot: This application: bilingual portfolio data, FAISS-based CV retrieval, configurable OpenAI-compatible providers, offline answers and deterministic safety guardrails. Stack: Python,",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "etrieval, configurable OpenAI-compatible providers, offline answers and deterministic safety guardrails. Stack: Python, Streamlit, FAISS, sentence-transformers, OpenAI SDK. URL: https://github.com/meliherenn/melih-eren-ai-cv\nExpense Tracker: Flutter application for income and expense tracking with Hive offline persistence and dashboard analytics. Stack: Flutter, Dart, Hive, Material 3. URL: https://github.com/meliherenn/Expense-Tracker\nRecipe App: Flutter recipe discovery application with search, category filtering and favorites. Stack: Flutter, Dart, Material 3. URL: https://github.com/meliherenn/Recipe-App\nE-Commerce UI: Modern Flutter e-commerce interface with product catalog, favorites,",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "://github.com/meliherenn/Recipe-App\nE-Commerce UI: Modern Flutter e-commerce interface with product catalog, favorites, cart flow and validated forms. Stack: Flutter, Dart, Material 3. URL: https://github.com/meliherenn/e-ticaret-ui\nSkills:\nMobile: Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV\nArchitecture and state: MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines\nData and APIs: REST, FastAPI, Retrofit, OkHttp, Firebase Auth, App Check, Firestore, Room, DataStore, Hive\nMedia: Media3/ExoPlayer, LibVLC, XMLTV, M3U/Xtream, Picture-in-Picture\nTesting and delivery: Unit testing, lint, GitHub Actions, Gradle, Google Play Console\nAdditional: Python, C#, .NET,",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "ure\nTesting and delivery: Unit testing, lint, GitHub Actions, Gradle, Google Play Console\nAdditional: Python, C#, .NET, SQL, Microsoft SQL Server, Linux",
+    "language": "en",
+    "source_file": "data.json"
+  },
+  {
+    "text": "MELIH EREN\nJunior Android & Flutter Developer | Mobil Uygulama Geliştirici\nIstanbul, Türkiye  |  +90 553 670 90 28  |  meliheren2834@gmail.com\nlinkedin.com/in/meliheren  |  github.com/meliherenn\nPROFESYONEL ÖZET\nOcak 2027'de mezun olması beklenen; Kotlin/Jetpack Compose ve Flutter/Dart ile Android, Android TV ve çok\nplatformlu mobil uygulamalar geliştiren Yazılım Mühendisliği öğrencisiyim. REST API, Firebase, çevrimdışı veri\nsaklama, medya oynatma, test ve Google Play yayın süreçlerinde uygulamalı deneyime sahibim.\nTEKNİK YETENEKLER\nMobil: Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV, responsive/adaptive UI\nMimari & durum yönetimi: MVVM, Repository Pattern,",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "d SDK, Flutter, Dart, Material 3, Android TV, responsive/adaptive UI\nMimari & durum yönetimi: MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines, Clean Architecture temelleri\nVeri & API: REST, FastAPI, Retrofit, OkHttp, Firebase Auth, Google Sign-In, App Check, Firestore, Storage, Room,\nDataStore, Hive\nMedya & yayın: Media3/ExoPlayer, LibVLC, WorkManager, XMLTV, M3U/Xtream, Gradle, Git/GitHub, Google Play\nConsole, unit test, lint, CI/CD\nEk: Python, C#, .NET, SQL, Microsoft SQL Server, Linux, Android Studio, VS Code\nÖNE ÇIKAN PROJELER\nIdealPlayer | Kotlin, Jetpack Compose, Android TV, Room, Hilt, Media3 | GitHub\n- Kullanıcının sağladığı M3U/M3U8 ve Xtream kaynakları için XMLTV EPG,",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "Compose, Android TV, Room, Hilt, Media3 | GitHub\n- Kullanıcının sağladığı M3U/M3U8 ve Xtream kaynakları için XMLTV EPG, canlı/VOD/dizi ekranları, arama,\nfavoriler, geçmiş, izlemeye devam etme ve Picture-in-Picture içeren Android mobil/TV oynatıcı geliştirdim.\n- Room, DataStore, Retrofit/OkHttp ve WorkManager ile MVVM/repository katmanları kurdum; Media3/LibVLC\nfallback, TV D-pad navigasyonu, güvenli ebeveyn PIN'i, tanılama ve Play/self-hosted yayınları ekledim.\nBioDietix | Flutter, Dart, FastAPI, Firebase, Hive, Python | GitHub\n- Desteklenen kan testi/alerji PDF'lerini işleyen ve barkodla taranan ürünleri profil, alerji, BMI ve besin etiketi\nsinyallerine göre değerlendiren iki dilli",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "ini işleyen ve barkodla taranan ürünleri profil, alerji, BMI ve besin etiketi\nsinyallerine göre değerlendiren iki dilli beslenme destek uygulaması geliştirdim.\n- Firebase Auth/Google Sign-In, App Check/Play Integrity, kimlik doğrulamalı FastAPI endpoint'leri, Open Food\nFacts, Hive ve Firestore/Storage entegrasyonları ile test, dev/prod flavor ve kapalı test akışlarını hazırladım.\nEk Flutter uygulamaları: Expense Tracker (Hive, dashboard analitiği) | Recipe App (arama, filtreleme, favoriler) |\nE-Commerce UI (ürün kataloğu, favoriler, sepet ve doğrulamalı formlar)\nDENEYİM & TOPLULUK\nFlutter Developer Intern | Rubikpara | Tem 2025 - Ağu 2025\n- Flutter arayüzleri, REST API ve uygulama içi veri",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "TOPLULUK\nFlutter Developer Intern | Rubikpara | Tem 2025 - Ağu 2025\n- Flutter arayüzleri, REST API ve uygulama içi veri akışları geliştirdim; hataları gidererek fintech form akışlarını,\nyeniden kullanılabilir bileşenleri, performansı ve UI kalitesini iyileştirdim.\nCore Team Member | Huawei Student Developers Türkiye | Kas 2025 - Devam - Geliştirici etkinlikleri, teknik\noturumlar ve topluluk projeleri.\nAI & Data Analytics Trainee | Yapay Zeka ve Teknoloji Akademisi (Google Destekli) | Ara 2024 - Kas 2025 - SQL,\nveri analizi, makine öğrenmesi temelleri ve final projesi.\nYazılım Stajları | Social Office, Payolog, Bilsoft Yazılım | Tem 2024 - Haz 2025 - Python, C#/.NET, SQL Server, UI",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "esi.\nYazılım Stajları | Social Office, Payolog, Bilsoft Yazılım | Tem 2024 - Haz 2025 - Python, C#/.NET, SQL Server, UI\ngeliştirme, hata ayıklama ve versiyon kontrolü.\nEĞİTİM & SERTİFİKALAR\nHaliç Üniversitesi - Yazılım Mühendisliği Lisans | 2021 - Beklenen mezuniyet: Ocak 2027\nSeçili sertifikalar: MasterFabric Mobile Developer Training (Haz 2026, MFA-MD-2026-0011); Flutter ile Uygulama\nGeliştirme - Android & iOS (Udemy, 2026); Google Advanced Data Analytics (Coursera)\nDiller: Türkçe, İngilizce",
+    "language": "tr",
+    "source_file": "Melih_Eren_cvtr.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "MELIH EREN\nJunior Android & Flutter Developer | Mobile Application Developer\nIstanbul, Türkiye  |  +90 553 670 90 28  |  meliheren2834@gmail.com\nlinkedin.com/in/meliheren  |  github.com/meliherenn\nPROFESSIONAL SUMMARY\nSoftware Engineering student graduating in January 2027, building Android, Android TV and cross-platform\nmobile applications with Kotlin/Jetpack Compose and Flutter/Dart. Hands-on experience with REST APIs,\nFirebase, offline persistence, media playback, testing and Google Play release workflows.\nTECHNICAL SKILLS\nMobile: Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV, responsive/adaptive UI\nArchitecture & state: MVVM, Repository Pattern, BLoC/Cubit,",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "utter, Dart, Material 3, Android TV, responsive/adaptive UI\nArchitecture & state: MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines, Clean Architecture fundamentals\nData & APIs: REST, FastAPI, Retrofit, OkHttp, Firebase Auth, Google Sign-In, App Check, Firestore, Storage,\nRoom, DataStore, Hive\nMedia & delivery: Media3/ExoPlayer, LibVLC, WorkManager, XMLTV, M3U/Xtream, Gradle, Git/GitHub, Google\nPlay Console, unit testing, lint, CI/CD\nAdditional: Python, C#, .NET, SQL, Microsoft SQL Server, Linux, Android Studio, VS Code\nSELECTED PROJECTS\nIdealPlayer | Kotlin, Jetpack Compose, Android TV, Room, Hilt, Media3 | GitHub\n- Built an Android mobile/TV player for user-provided M3U/M3U8 and",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "ack Compose, Android TV, Room, Hilt, Media3 | GitHub\n- Built an Android mobile/TV player for user-provided M3U/M3U8 and Xtream sources with XMLTV EPG,\nlive/VOD/series browsing, search, favorites, history, continue watching and Picture-in-Picture.\n- Applied MVVM/repository layers with Room, DataStore, Retrofit/OkHttp and WorkManager; implemented\nMedia3/LibVLC fallback, TV D-pad navigation, secure parental PIN, diagnostics and Play/self-hosted releases.\nBioDietix | Flutter, Dart, FastAPI, Firebase, Hive, Python | GitHub\n- Developed a bilingual nutrition-support app that parses supported blood-test/allergy PDFs and evaluates\nbarcode-scanned products using profile, allergy, BMI and",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "pp that parses supported blood-test/allergy PDFs and evaluates\nbarcode-scanned products using profile, allergy, BMI and nutrition-label signals.\n- Integrated Firebase Auth/Google Sign-In, App Check/Play Integrity, authenticated FastAPI endpoints, Open\nFood Facts, Hive and Firestore/Storage; added tests, dev/prod flavors and closed-testing workflows.\nAdditional Flutter apps: Expense Tracker (Hive, dashboard analytics) | Recipe App (search, filtering, favorites) |\nE-Commerce UI (product catalog, favorites, cart and validated forms)\nEXPERIENCE & COMMUNITY\nFlutter Developer Intern | Rubikpara | Jul 2025 - Aug 2025\n- Built Flutter interfaces, integrated REST APIs and application data flows,",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "r Intern | Rubikpara | Jul 2025 - Aug 2025\n- Built Flutter interfaces, integrated REST APIs and application data flows, resolved defects and improved\nfintech form flows, reusable components, performance and UI quality.\nCore Team Member | Huawei Student Developers Türkiye | Nov 2025 - Present - Developer events, technical\nsessions and community projects.\nAI & Data Analytics Trainee | Artificial Intelligence and Technology Academy (Google Supported) | Dec 2024 - Nov\n2025 - SQL, data analysis, machine-learning fundamentals and final project.\nSoftware Internships | Social Office, Payolog, Bilsoft Software | Jul 2024 - Jun 2025 - Python, C#/.NET, SQL Server,\nUI development, debugging and version",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  },
+  {
+    "text": "e, Payolog, Bilsoft Software | Jul 2024 - Jun 2025 - Python, C#/.NET, SQL Server,\nUI development, debugging and version control.\nEDUCATION & CERTIFICATIONS\nHaliç University - B.Sc. in Software Engineering | 2021 - Expected Jan 2027\nSelected certifications: MasterFabric Mobile Developer Training (Jun 2026, MFA-MD-2026-0011); Flutter\nApplication Development - Android & iOS (Udemy, 2026); Google Advanced Data Analytics (Coursera)\nLanguages: Turkish, English",
+    "language": "en",
+    "source_file": "Melih_Eren_ATS_CV.pdf",
+    "source_page": 1
+  }
+]

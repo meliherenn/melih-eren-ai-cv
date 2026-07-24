@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "files": {
+    "index.faiss": "13103006f2c3e72d5da03a0bccb36c58f2e63c0f8196d800408a531060f0d947",
+    "documents.json": "9862d6da2d960659e9dbfea92ec7a97f79eb1ef832d83083357a6f2d95e9595f"
+  }
+}

@@ -1,83 +1,153 @@
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
 import json
+import os
+import tempfile
 from pathlib import Path
 
+import faiss
+from pypdf import PdfReader
+from sentence_transformers import SentenceTransformer
+
+from portfolio_core import (
+    EMBEDDING_MODEL,
+    load_portfolio_data,
+    resolve_project_file,
+    write_index_manifest,
+)
 
 APP_ROOT = Path(__file__).resolve().parent
 DATA_PATH = APP_ROOT / "data.json"
+INDEX_PATH = APP_ROOT / "faiss_index"
+CHUNK_SIZE = 700
+CHUNK_OVERLAP = 120
 
 
-def get_configured_pdfs():
-    """Read active CV PDF paths from data.json instead of hardcoding filenames."""
-    with DATA_PATH.open("r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    profile = data.get("profile", {})
+def get_configured_pdfs(data):
+    """Read active CV PDF paths from validated portfolio data."""
+    profile = data["profile"]
     return [
-        (profile.get("cv_pdf_tr"), "tr"),
-        (profile.get("cv_pdf_en"), "en"),
+        (profile["cv_pdf_tr"], "tr"),
+        (profile["cv_pdf_en"], "en"),
     ]
 
 
+def get_structured_records(data):
+    """Create searchable bilingual records from the verified JSON data."""
+    records = []
+    for lang in ("tr", "en"):
+        lang_data = data[lang]
+        project_lines = [
+            f"{project['name']}: {project['description']} "
+            f"Stack: {', '.join(project['stack'])}. URL: {project['url']}"
+            for project in lang_data["projects"]
+        ]
+        skill_lines = [f"{name}: {value}" for name, value in lang_data["skills"].items()]
+        content = "\n".join(
+            [
+                lang_data["prompts"]["identity_a"],
+                f"Education: {lang_data['education']}",
+                f"Strengths: {lang_data['prompts']['strengths']}",
+                "Experience:",
+                *lang_data["experience"],
+                "Projects:",
+                *project_lines,
+                "Skills:",
+                *skill_lines,
+            ]
+        )
+        records.append({"text": content, "language": lang, "source_file": "data.json"})
+    return records
+
+
+def split_text(text, chunk_size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
+    """Split text into overlapping chunks while preferring natural boundaries."""
+    normalized = "\n".join(line.strip() for line in text.splitlines() if line.strip())
+    if not normalized:
+        return []
+
+    chunks = []
+    start = 0
+    while start < len(normalized):
+        target_end = min(start + chunk_size, len(normalized))
+        end = target_end
+        if target_end < len(normalized):
+            search_floor = start + chunk_size // 2
+            candidates = [
+                normalized.rfind(separator, search_floor, target_end) for separator in ("\n", ". ", "; ", " ")
+            ]
+            natural_end = max(candidates)
+            if natural_end > start:
+                end = natural_end + 1
+
+        chunk = normalized[start:end].strip()
+        if chunk:
+            chunks.append(chunk)
+        if end >= len(normalized):
+            break
+        start = max(end - overlap, start + 1)
+
+    return chunks
+
+
 def create_vector_db():
-    """
-    Loads configured CV PDFs (Turkish & English),
-    splits them into chunks, and builds a unified FAISS vector index.
-    """
-    pdf_files = get_configured_pdfs()
+    """Build a pickle-free FAISS index from verified JSON data and both CV PDFs."""
+    data = load_portfolio_data(DATA_PATH)
+    source_records = get_structured_records(data)
 
-    all_documents = []
+    for pdf_name, lang in get_configured_pdfs(data):
+        pdf_path = resolve_project_file(APP_ROOT, pdf_name)
+        if not pdf_path:
+            raise FileNotFoundError(f"Missing or unsafe configured PDF: {pdf_name}")
 
-    for pdf_name, lang in pdf_files:
-        if not pdf_name:
-            continue
+        print(f"Reading: {pdf_path.name}")
+        reader = PdfReader(pdf_path)
+        for page_number, page in enumerate(reader.pages, start=1):
+            text = page.extract_text() or ""
+            if text.strip():
+                source_records.append(
+                    {
+                        "text": text,
+                        "language": lang,
+                        "source_file": pdf_path.name,
+                        "source_page": page_number,
+                    }
+                )
+        print(f"  Loaded {len(reader.pages)} page(s).")
 
-        pdf_path = (APP_ROOT / pdf_name).resolve()
-        try:
-            pdf_path.relative_to(APP_ROOT)
-        except ValueError:
-            print(f"   ⚠️ Atlanıyor (proje dışı dosya yolu): {pdf_name}")
-            continue
+    documents = []
+    for record in source_records:
+        for chunk in split_text(record["text"]):
+            documents.append({**record, "text": chunk})
 
-        if pdf_path.exists():
-            print(f"📄 Okunuyor: {pdf_path.name}")
-            loader = PyPDFLoader(str(pdf_path))
-            docs = loader.load()
-            for doc in docs:
-                doc.metadata["language"] = lang
-                doc.metadata["source_file"] = pdf_path.name
-            all_documents.extend(docs)
-            print(f"   ✅ {len(docs)} sayfa okundu.")
-        else:
-            print(f"   ⚠️ Atlanıyor (bulunamadı): {pdf_path.name}")
+    if not documents:
+        raise RuntimeError("No verified portfolio documents were found.")
 
-    if not all_documents:
-        print("❌ Hiçbir PDF bulunamadı! Lütfen PDF dosyalarını proje klasörüne ekleyin.")
-        return
+    print(f"Created {len(documents)} searchable chunk(s).")
+    print(f"Creating embeddings with {EMBEDDING_MODEL}...")
+    model = SentenceTransformer(EMBEDDING_MODEL, device="cpu")
+    vectors = model.encode(
+        [document["text"] for document in documents],
+        normalize_embeddings=True,
+        convert_to_numpy=True,
+        show_progress_bar=True,
+    ).astype("float32")
 
-    print(f"\n📊 Toplam {len(all_documents)} sayfa yüklendi.")
+    index = faiss.IndexFlatIP(vectors.shape[1])
+    index.add(vectors)
 
-    print("✂️  Metin bölünüyor...")
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=150,
-        length_function=len,
-        separators=["\n\n", "\n", ". ", " ", ""]
-    )
-    texts = text_splitter.split_documents(all_documents)
-    print(f"   📦 {len(texts)} parçaya bölündü.")
+    print("Writing FAISS index and JSON metadata...")
+    INDEX_PATH.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix=".faiss-build-", dir=APP_ROOT) as temp_dir:
+        temp_path = Path(temp_dir)
+        faiss.write_index(index, str(temp_path / "index.faiss"))
+        with (temp_path / "documents.json").open("w", encoding="utf-8") as stream:
+            json.dump(documents, stream, ensure_ascii=False, indent=2)
+            stream.write("\n")
 
-    print("🧠 Vektörler oluşturuluyor (bu işlem biraz sürebilir)...")
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        for filename in ("index.faiss", "documents.json"):
+            os.replace(temp_path / filename, INDEX_PATH / filename)
 
-    vectorstore = FAISS.from_documents(texts, embeddings)
-
-    print("💾 Vektör veritabanı kaydediliyor...")
-    vectorstore.save_local(str(APP_ROOT / "faiss_index"))
-    print("✅ İşlem tamam! 'faiss_index' klasörü oluşturuldu/güncellendi.")
+    manifest_path = write_index_manifest(INDEX_PATH)
+    print(f"Index and checksum manifest updated: {manifest_path.relative_to(APP_ROOT)}")
 
 
 if __name__ == "__main__":

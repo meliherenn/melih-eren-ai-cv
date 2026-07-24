@@ -1,6 +1,6 @@
 import re
-from typing import Any, Mapping
-
+from collections.abc import Mapping
+from typing import Any
 
 DEFAULT_MAX_INPUT_CHARS = 1200
 CONTROL_CHARS_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
@@ -48,8 +48,21 @@ SECRET_LIKE_OUTPUT_RE = re.compile(
     r"(sk-[A-Za-z0-9_\-]{12,}|"
     r"csk-[A-Za-z0-9_\-]{12,}|"
     r"gsk_[A-Za-z0-9_\-]{12,}|"
+    r"gh[pousr]_[A-Za-z0-9]{20,}|"
+    r"github_pat_[A-Za-z0-9_]{20,}|"
+    r"xox[baprs]-[A-Za-z0-9\-]{12,}|"
     r"AIza[A-Za-z0-9_\-]{20,}|"
     r"[A-Za-z0-9_\-]{24,}\.[A-Za-z0-9_\-]{6,}\.[A-Za-z0-9_\-]{20,})"
+)
+BEARER_TOKEN_RE = re.compile(r"(?i)\bBearer\s+[A-Za-z0-9._~+/=-]{12,}")
+LABELED_SECRET_RE = re.compile(
+    r"(?i)\b(api[_\s-]?key|access[_\s-]?token|refresh[_\s-]?token|password|secret|authorization)"
+    r"\s*[:=]\s*[\"']?[A-Za-z0-9._~+/=-]{8,}[\"']?"
+)
+PRIVATE_KEY_RE = re.compile(
+    r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----.*?"
+    r"-----END (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
+    flags=re.DOTALL,
 )
 
 
@@ -62,7 +75,10 @@ def normalize_user_input(value: str, max_chars: int = DEFAULT_MAX_INPUT_CHARS) -
 
 
 def redact_sensitive_tokens(text: str) -> str:
-    return SECRET_LIKE_OUTPUT_RE.sub("[redacted]", text or "")
+    redacted = PRIVATE_KEY_RE.sub("[redacted private key]", text or "")
+    redacted = BEARER_TOKEN_RE.sub("Bearer [redacted]", redacted)
+    redacted = LABELED_SECRET_RE.sub("[redacted credential]", redacted)
+    return SECRET_LIKE_OUTPUT_RE.sub("[redacted]", redacted)
 
 
 def _clean_query(text: str) -> str:
@@ -153,13 +169,17 @@ def build_offline_response(
 
     query = _clean_query(user_input)
 
-    if _has_any(query, ("deneyim", "iş", "is ", "staj", "work", "experience", "intern")):
+    if _has_any(query, ("deneyim", "iş", "staj", "work", "experience", "intern")):
         title = "Melih'in öne çıkan deneyimleri:" if lang_code == "tr" else "Melih's key experience:"
         return title + "\n" + _format_bullets(lang_data.get("experience", []))
 
     if _has_any(query, ("proje", "project", "portfolio", "github")):
         title = "Melih'in projeleri:" if lang_code == "tr" else "Melih's projects:"
-        return title + "\n" + _format_bullets(lang_data.get("projects", []))
+        return (
+            title
+            + "\n"
+            + _format_bullets([_format_project(project) for project in lang_data.get("projects", [])])
+        )
 
     if _has_any(query, ("sertifika", "certificate", "certification")):
         title = "Melih'in sertifikaları:" if lang_code == "tr" else "Melih's certificates:"
@@ -178,18 +198,29 @@ def build_offline_response(
         title = "Kariyer hedefi:" if lang_code == "tr" else "Career goal:"
         return f"{title} {lang_data.get('prompts', {}).get('career_goals', '')}"
 
+    if _has_any(query, ("neden seni", "neden sizi", "why hire", "strength", "güçlü yön")):
+        return lang_data.get("prompts", {}).get("strengths", "")
+
+    if _has_any(query, ("eğitim", "okul", "üniversite", "mezun", "education", "university", "graduat")):
+        title = "Eğitim:" if lang_code == "tr" else "Education:"
+        return f"{title} {lang_data.get('education', '')}"
+
     if _has_any(query, ("kimsin", "kendini", "tanıt", "who are you", "about", "introduce")):
         return lang_data.get("prompts", {}).get("identity_a", "")
 
     if profile and _has_any(query, ("iletişim", "mail", "email", "linkedin", "contact")):
         contact = profile.get("contact", {})
         title = "İletişim bağlantıları:" if lang_code == "tr" else "Contact links:"
-        return title + "\n" + _format_bullets(
-            [
-                f"GitHub: {contact.get('github', '')}",
-                f"LinkedIn: {contact.get('linkedin', '')}",
-                f"Email: {contact.get('email', '').replace('mailto:', '')}",
-            ]
+        return (
+            title
+            + "\n"
+            + _format_bullets(
+                [
+                    f"GitHub: {contact.get('github', '')}",
+                    f"LinkedIn: {contact.get('linkedin', '')}",
+                    f"Email: {contact.get('email', '').replace('mailto:', '')}",
+                ]
+            )
         )
 
     if lang_code == "tr":
@@ -211,3 +242,15 @@ def _has_any(text: str, terms: tuple[str, ...]) -> bool:
 
 def _format_bullets(items: Any) -> str:
     return "\n".join(f"- {item}" for item in items if item) or "- No verified data available."
+
+
+def _format_project(project: Any) -> str:
+    if not isinstance(project, Mapping):
+        return str(project)
+    name = project.get("name", "Project")
+    url = project.get("url", "")
+    description = project.get("description", "")
+    stack = ", ".join(project.get("stack", []))
+    linked_name = f"[{name}]({url})" if url else str(name)
+    suffix = f" Stack: {stack}." if stack else ""
+    return f"{linked_name}: {description}{suffix}"

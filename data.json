@@ -1,198 +1,315 @@
 {
-    "profile": {
-        "name": "Melih Eren",
-        "title_tr": "Yazılım Mühendisliği Öğrencisi",
-        "title_en": "Software Engineering Student",
-        "image": "ben.png",
-        "cv_pdf_tr": "Melih_Eren_cvtr.pdf",
-        "cv_pdf_en": "Melih_Eren_ATS_CV.pdf",
-        "contact": {
-            "github": "https://github.com/meliherenn",
-            "linkedin": "https://www.linkedin.com/in/meliheren/",
-            "email": "mailto:meliheren2834@gmail.com"
-        }
-    },
-    "tr": {
-        "prompts": {
-            "identity_q": [
-                "Kimsin?",
-                "Kendini tanıt"
-            ],
-            "identity_a": "Ben Melih Eren. Haliç Üniversitesi Yazılım Mühendisliği 4. sınıf öğrencisiyim. Teknolojiye tutkulu, sürekli öğrenen ve global projelerde yer almayı hedefleyen bir mühendis adayıyım. Flutter ile mobil uygulama geliştirme, Python ile veri bilimi ve makine öğrenmesi alanlarında deneyim sahibiyim.",
-            "style_rules": [
-                "YASAKLI KELİMELER: 'Fırsatı buldum', 'imkanı yakaladım', 'deneyim kazandım', 'projeleri teslim ettim'. BUNLARI KULLANMA.",
-                "TERCİH EDİLEN FİİLLER: 'Geliştirdim', 'Tasarladım', 'Kodladım', 'Yönettim', 'İnşa ettim', 'Entegre ettim'.",
-                "ÖZNE: Cümleleri hep 'Ben' öznesiyle, 1. tekil şahıs kur (Örn: 'Yaptım').",
-                "Linkler: Sertifikaları her zaman [İsim](Link) formatında ver.",
-                "SADECE sorulan konuyu cevapla. 'Kendini tanıt' denmediği sürece tüm CV'yi özetleme."
-            ],
-            "career_goals": "Kısa vadede Flutter ve Veri Bilimi alanındaki yetkinliklerimi profesyonel projelere aktarmak; uzun vadede global ölçekli projelerde Tech Lead olarak teknolojiye yön vermek istiyorum."
-        },
-        "experience": [
-            "Yapay Zeka ve Teknoloji Akademisi (Bursiyer): 9 aylık yoğun eğitim sürecinde Google destekli Veri Bilimi projeleri geliştirdim. Python ve Makine Öğrenmesi algoritmalarını derinlemesine öğrendim.",
-            "Huawei Student Developers (HSD): Core Team Member olarak topluluk etkinliklerinin organize edilmesinde aktif rol aldım ve ekiple birlikte teknik projeler geliştirdim.",
-            "Payolog (ABD - Remote): Yazılım Stajyeri olarak Flutter ile mobil uygulamalar geliştirdim ve global bir ekipte aktif rol aldım.",
-            "Rubikpara: Fintech Stajyeri olarak Flutter/Dart kullanarak mobil ödeme sistemleri arayüzlerini kodladım.",
-            "Bilsoft Yazılım: Yazılım Stajyeri olarak C# ve SQL kullanarak ERP modülleri tasarladım."
-        ],
-        "certificates": [
-            {
-                "name": "Turkcell Geleceği Yazanlar - Python 201",
-                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
-            },
-            {
-                "name": "Turkcell Geleceği Yazanlar - Python 101",
-                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
-            },
-            {
-                "name": "BTK Akademi - Python Sertifikası",
-                "url": "https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=JoNfrXvKp4"
-            },
-            {
-                "name": "Google Data Analytics / AI Academy",
-                "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
-            },
-            {
-                "name": "IBM CyberStart - Kodluyoruz",
-                "url": "https://verified.sertifier.com/tr/verify/36023786839734"
-            },
-            {
-                "name": "Datathon Katılım Sertifikası",
-                "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
-            },
-            {
-                "name": "Agile Development Day - Coderspace",
-                "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
-            },
-            {
-                "name": "Staj Başarı Sertifikası - TNC Group",
-                "url": "https://verified.sertifier.com/tr/verify/74146002630005/"
-            }
-        ],
-        "projects": [
-            "BioDietix (Bitirme Projesi): Python ve Makine Öğrenmesi kullanarak kan değerlerine göre kişiselleştirilmiş beslenme analizi yapan bir sistem geliştirdim.",
-            "AI CV Chatbot: Cerebras API ve RAG (FAISS) entegrasyonu ile çalışan bu interaktif portfolyo chatbot'u tasarladım ve geliştirdim.",
-            "Flutter Mobil Uygulamalar: Expense Tracker, Recipe App ve E-Commerce UI gibi çeşitli Flutter projeleri geliştirdim.",
-            "GitHub Repoları: Veri analizi notebookları ve Flutter UI çalışmaları hazırladım."
-        ],
-        "skills": {
-            "Python": "8/10",
-            "Flutter/Dart": "8/10",
-            "SQL": "8/10",
-            "C#": "7/10",
-            "Git & GitHub": "8/10",
-            "Makine Öğrenmesi": "7/10",
-            "Streamlit": "8/10",
-            "İngilizce": "B2/C1"
-        },
-        "ui": {
-            "welcome_msg": "👋 Merhaba! Ben Melih'in AI asistanıyım. Deneyimlerim, projelerim, sertifikalarım veya yeteneklerim hakkında her şeyi sorabilirsiniz!",
-            "buttons": [
-                "💼 İş Deneyimlerin?",
-                "🚀 Projelerin Neler?",
-                "📜 Sertifikaların?",
-                "💻 Hangi Dilleri Biliyorsun?",
-                "🌟 Neden Seni Seçmeliyiz?",
-                "🎯 Kariyer Hedeflerin?"
-            ],
-            "hidden_prompts": [
-                "İş deneyimlerinden bahseder misin?",
-                "Geliştirdiğin kişisel projelerden bahseder misin?",
-                "Hangi sertifikalara sahipsin?",
-                "Bildiğin yazılım dillerini ve puanlarını listeler misin?",
-                "Seni neden işe almalıyız? Güçlü yönlerin neler?",
-                "Kısa ve uzun vadeli kariyer hedeflerinden bahseder misin?"
-            ]
-        }
-    },
-    "en": {
-        "prompts": {
-            "identity_q": "Who are you?",
-            "identity_a": "I am Melih Eren, a senior Software Engineering student at Halic University. I am passionate about technology, a continuous learner, and aspire to contribute to global-scale projects. I have hands-on experience in mobile app development with Flutter, data science and machine learning with Python.",
-            "style_rules": [
-                "Use ACTIVE verbs: 'Developed', 'Designed', 'Built', 'Managed', 'Integrated'.",
-                "Avoid: 'Had the opportunity', 'Gained experience', 'Was able to'.",
-                "First person: Always use 'I' as the subject.",
-                "Links: Always format certificates as [Name](URL).",
-                "ANSWER ONLY the specific question asked. Do not summarize the whole CV unless asked 'Tell me about yourself'."
-            ],
-            "career_goals": "Short-term: Apply my Flutter & AI/Data Science skills in professional projects. Long-term: Become a Tech Lead in a global tech company, driving innovation and leading engineering teams."
-        },
-        "experience": [
-            "AI & Tech Academy (Scholar): Completed a 9-month intensive Google-supported Data Science bootcamp. Built ML models and gained deep Python expertise.",
-            "Huawei Student Developers (HSD): As a Core Team Member, I organized community events and collaborated on technical projects with the team.",
-            "Payolog (USA - Remote): Developed mobile applications using Flutter in a global remote team as a Software Intern.",
-            "Rubikpara: Built mobile payment interfaces using Flutter/Dart as a Fintech Intern.",
-            "Bilsoft Software: Designed ERP modules using C# and SQL as a Software Intern."
-        ],
-        "certificates": [
-            {
-                "name": "Turkcell Future Writers - Python 201",
-                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
-            },
-            {
-                "name": "Turkcell Future Writers - Python 101",
-                "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
-            },
-            {
-                "name": "BTK Academy - Python Certificate",
-                "url": "https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=JoNfrXvKp4"
-            },
-            {
-                "name": "Google Data Analytics / AI Academy",
-                "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
-            },
-            {
-                "name": "IBM CyberStart - Kodluyoruz",
-                "url": "https://verified.sertifier.com/tr/verify/36023786839734"
-            },
-            {
-                "name": "Datathon Participation Certificate",
-                "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
-            },
-            {
-                "name": "Agile Development Day - Coderspace",
-                "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
-            },
-            {
-                "name": "Internship Achievement - TNC Group",
-                "url": "https://verified.sertifier.com/tr/verify/74146002630005/"
-            }
-        ],
-        "projects": [
-            "BioDietix (Graduation Project): Developed a personalized nutrition analysis system based on blood test values using Python & Machine Learning.",
-            "AI CV Chatbot: Designed and built this interactive portfolio chatbot with Cerebras API and RAG (FAISS) integration.",
-            "Flutter Mobile Apps: Developed various Flutter projects including Expense Tracker, Recipe App, and E-Commerce UI.",
-            "GitHub Portfolio: Created data analysis notebooks and Flutter UI kits."
-        ],
-        "skills": {
-            "Python": "8/10",
-            "Flutter/Dart": "8/10",
-            "SQL": "8/10",
-            "C#": "7/10",
-            "Git & GitHub": "8/10",
-            "Machine Learning": "7/10",
-            "Streamlit": "8/10",
-            "English": "B2/C1"
-        },
-        "ui": {
-            "welcome_msg": "👋 Hello! I am Melih's AI assistant. Ask me anything about his experience, projects, certificates, or skills!",
-            "buttons": [
-                "💼 Work Experience?",
-                "🚀 What are your Projects?",
-                "📜 Certificates?",
-                "💻 Programming Skills?",
-                "🌟 Why Hire You?",
-                "🎯 Career Goals?"
-            ],
-            "hidden_prompts": [
-                "Describe your work experience.",
-                "Tell me about your personal projects.",
-                "What certificates do you have?",
-                "List your programming languages and skill ratings.",
-                "Why should we hire you? What are your strengths?",
-                "What are your short-term and long-term career goals?"
-            ]
-        }
+  "profile": {
+    "name": "Melih Eren",
+    "title_tr": "Junior Android & Flutter Developer",
+    "title_en": "Junior Android & Flutter Developer",
+    "image": "ben.png",
+    "cv_pdf_tr": "Melih_Eren_cvtr.pdf",
+    "cv_pdf_en": "Melih_Eren_ATS_CV.pdf",
+    "contact": {
+      "github": "https://github.com/meliherenn",
+      "linkedin": "https://www.linkedin.com/in/meliheren/",
+      "email": "mailto:meliheren2834@gmail.com"
     }
+  },
+  "tr": {
+    "education": "Haliç Üniversitesi Yazılım Mühendisliği Lisans, 2021 - devam. Beklenen mezuniyet: Ocak 2027.",
+    "prompts": {
+      "identity_q": [
+        "Kimsin?",
+        "Kendini tanıt"
+      ],
+      "identity_a": "Ben Melih Eren. Ocak 2027'de mezun olması beklenen Haliç Üniversitesi Yazılım Mühendisliği öğrencisiyim. Kotlin/Jetpack Compose ve Flutter/Dart ile Android, Android TV ve çok platformlu mobil uygulamalar geliştiriyorum. REST API, Firebase, çevrimdışı veri saklama, medya oynatma, test ve Google Play yayın süreçlerinde uygulamalı deneyime sahibim.",
+      "style_rules": [
+        "Doğrulanmış portfolyo verilerinin dışına çıkma; emin olmadığın bilgiyi açıkça belirt.",
+        "Geliştirdim, tasarladım, uyguladım ve entegre ettim gibi somut, aktif fiiller kullan.",
+        "Birinci tekil şahıs kullan ve gereksiz övgü veya abartı ekleme.",
+        "Yalnızca yapılandırılmış veride bulunan bağlantıları kullan.",
+        "Sadece sorulan konuyu cevapla; istenmedikçe tüm CV'yi özetleme."
+      ],
+      "career_goals": "Kısa vadede Android veya Flutter ekibinde sürdürülebilir mobil ürünler geliştirmek; uzun vadede mobil mimari, performans ve yayın kalitesi konusunda daha fazla sorumluluk alan bir yazılım mühendisi olmak istiyorum.",
+      "strengths": "Mobil uygulamaları yalnızca arayüz seviyesinde değil; mimari, veri, güvenlik, test ve yayın süreçleriyle birlikte ele alıyorum. Kotlin/Jetpack Compose ve Flutter/Dart projelerim, Android TV ve medya oynatma deneyimim ve farklı ekiplerde tamamladığım stajlar hızlı öğrenme ve uygulama yeteneğimi gösteriyor."
+    },
+    "experience": [
+      "Flutter Developer Intern | Rubikpara | Temmuz 2025 - Ağustos 2025: Flutter arayüzleri, REST API entegrasyonları, uygulama içi veri akışları ve fintech form bileşenleri geliştirdim; hata giderme ve UI/performans iyileştirmeleri yaptım.",
+      "Core Team Member | Huawei Student Developers Türkiye | Kasım 2025 - devam: Geliştirici etkinlikleri, teknik oturumlar, bilgi paylaşımı ve topluluk projelerine katkı sağlıyorum.",
+      "AI & Data Analytics Trainee | Yapay Zeka ve Teknoloji Akademisi (Google Destekli) | Aralık 2024 - Kasım 2025: SQL, veri analizi ve makine öğrenmesi temellerini gerçek veri setleri ve final projesinde uyguladım.",
+      "Yazılım Stajları | Social Office, Payolog, Bilsoft Yazılım | Temmuz 2024 - Haziran 2025: Python, C#/.NET, SQL Server, UI geliştirme, hata ayıklama ve versiyon kontrolü üzerinde çalıştım."
+    ],
+    "projects": [
+      {
+        "name": "IdealPlayer",
+        "description": "Kullanıcının sağladığı M3U/M3U8 ve Xtream kaynakları için XMLTV EPG, canlı/VOD/dizi ekranları, arama, favoriler, geçmiş, Picture-in-Picture ve Android TV D-pad navigasyonu içeren mobil/TV medya oynatıcı.",
+        "url": "https://github.com/meliherenn/IdealPlayer",
+        "stack": [
+          "Kotlin",
+          "Jetpack Compose",
+          "Android TV",
+          "MVVM",
+          "Room",
+          "Hilt",
+          "Media3"
+        ]
+      },
+      {
+        "name": "BioDietix",
+        "description": "Desteklenen kan testi ve alerji PDF'lerini işleyen; barkodla taranan ürünleri profil, alerji, BMI ve besin etiketi sinyallerine göre değerlendiren iki dilli beslenme destek uygulaması.",
+        "url": "https://github.com/meliherenn/BioDietix",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "FastAPI",
+          "Firebase",
+          "Hive",
+          "Python"
+        ]
+      },
+      {
+        "name": "AI Portfolio Chatbot",
+        "description": "İki dilli portfolyo verisi, FAISS tabanlı CV retrieval, yapılandırılabilir OpenAI-uyumlu sağlayıcılar, çevrimdışı yanıtlar ve deterministik güvenlik kuralları içeren bu uygulama.",
+        "url": "https://github.com/meliherenn/melih-eren-ai-cv",
+        "stack": [
+          "Python",
+          "Streamlit",
+          "FAISS",
+          "sentence-transformers",
+          "OpenAI SDK"
+        ]
+      },
+      {
+        "name": "Expense Tracker",
+        "description": "Gelir-gider takibi, Hive ile çevrimdışı saklama ve dashboard analitiği içeren Flutter uygulaması.",
+        "url": "https://github.com/meliherenn/Expense-Tracker",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Hive",
+          "Material 3"
+        ]
+      },
+      {
+        "name": "Recipe App",
+        "description": "Tarif arama, kategori filtreleme ve favori yönetimi içeren Flutter keşif uygulaması.",
+        "url": "https://github.com/meliherenn/Recipe-App",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Material 3"
+        ]
+      },
+      {
+        "name": "E-Commerce UI",
+        "description": "Ürün kataloğu, favoriler, sepet akışı ve doğrulamalı formlar içeren modern Flutter e-ticaret arayüzü.",
+        "url": "https://github.com/meliherenn/e-ticaret-ui",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Material 3"
+        ]
+      }
+    ],
+    "skills": {
+      "Mobil": "Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV",
+      "Mimari ve durum yönetimi": "MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines",
+      "Veri ve API": "REST, FastAPI, Retrofit, OkHttp, Firebase Auth, App Check, Firestore, Room, DataStore, Hive",
+      "Medya": "Media3/ExoPlayer, LibVLC, XMLTV, M3U/Xtream, Picture-in-Picture",
+      "Test ve yayın": "Unit test, lint, GitHub Actions, Gradle, Google Play Console",
+      "Ek": "Python, C#, .NET, SQL, Microsoft SQL Server, Linux"
+    },
+    "certificates": [
+      {
+        "name": "Google Advanced Data Analytics Professional Certificate",
+        "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
+      },
+      {
+        "name": "IBM CyberStart - Kodluyoruz",
+        "url": "https://verified.sertifier.com/tr/verify/36023786839734"
+      },
+      {
+        "name": "Datathon Katılım Sertifikası",
+        "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
+      },
+      {
+        "name": "Agile Development Day - Coderspace",
+        "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
+      },
+      {
+        "name": "Turkcell Geleceği Yazanlar - Python 201",
+        "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
+      },
+      {
+        "name": "Turkcell Geleceği Yazanlar - Python 101",
+        "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
+      }
+    ],
+    "ui": {
+      "welcome_msg": "Merhaba! Ben Melih'in AI portfolyo asistanıyım. Deneyimleri, projeleri, teknik yetenekleri, eğitimi veya sertifikaları hakkında soru sorabilirsiniz.",
+      "buttons": [
+        "💼 Deneyim",
+        "🚀 Projeler",
+        "💻 Teknik Yetenekler",
+        "🎓 Eğitim",
+        "🌟 Neden Melih?",
+        "🎯 Kariyer Hedefi"
+      ],
+      "hidden_prompts": [
+        "İş deneyimlerinden kısaca bahseder misin?",
+        "Öne çıkan projelerini ve kullandığın teknolojileri anlatır mısın?",
+        "Temel teknik yeteneklerini kategorilere göre listeler misin?",
+        "Eğitimini ve beklenen mezuniyet tarihini söyler misin?",
+        "Seni neden Junior Android veya Flutter Developer pozisyonu için değerlendirmeliyiz?",
+        "Kısa ve uzun vadeli kariyer hedeflerinden bahseder misin?"
+      ]
+    }
+  },
+  "en": {
+    "education": "B.Sc. in Software Engineering at Haliç University, 2021 - present. Expected graduation: January 2027.",
+    "prompts": {
+      "identity_q": [
+        "Who are you?",
+        "Tell me about yourself"
+      ],
+      "identity_a": "I am Melih Eren, a Software Engineering student at Haliç University with an expected graduation date of January 2027. I build Android, Android TV and cross-platform mobile applications with Kotlin/Jetpack Compose and Flutter/Dart. I have hands-on experience with REST APIs, Firebase, offline persistence, media playback, testing and Google Play release workflows.",
+      "style_rules": [
+        "Stay within the verified portfolio data and clearly state when information is unavailable.",
+        "Use concrete active verbs such as developed, designed, implemented and integrated.",
+        "Use first person and avoid inflated claims or generic praise.",
+        "Use only links that exist in the structured portfolio data.",
+        "Answer only the question asked; do not summarize the full CV unless requested."
+      ],
+      "career_goals": "In the short term, I want to contribute to maintainable mobile products in an Android or Flutter team. Over time, I aim to take greater ownership of mobile architecture, performance and release quality.",
+      "strengths": "I approach mobile development beyond the UI layer, covering architecture, data, security, testing and release workflows. My Kotlin/Jetpack Compose and Flutter/Dart projects, Android TV and media playback work, and internships across different teams demonstrate practical execution and continuous learning."
+    },
+    "experience": [
+      "Flutter Developer Intern | Rubikpara | July 2025 - August 2025: Built Flutter interfaces, REST integrations, in-app data flows and fintech form components; resolved defects and improved UI quality and performance.",
+      "Core Team Member | Huawei Student Developers Türkiye | November 2025 - present: Contribute to developer events, technical sessions, knowledge sharing and community projects.",
+      "AI & Data Analytics Trainee | Artificial Intelligence and Technology Academy (Google Supported) | December 2024 - November 2025: Applied SQL, data analysis and machine-learning fundamentals to real datasets and a final project.",
+      "Software Internships | Social Office, Payolog, Bilsoft Software | July 2024 - June 2025: Worked with Python, C#/.NET, SQL Server, UI development, debugging and version control."
+    ],
+    "projects": [
+      {
+        "name": "IdealPlayer",
+        "description": "Android mobile/TV player for user-provided M3U/M3U8 and Xtream sources, featuring XMLTV EPG, live/VOD/series browsing, search, favorites, history, Picture-in-Picture and TV D-pad navigation.",
+        "url": "https://github.com/meliherenn/IdealPlayer",
+        "stack": [
+          "Kotlin",
+          "Jetpack Compose",
+          "Android TV",
+          "MVVM",
+          "Room",
+          "Hilt",
+          "Media3"
+        ]
+      },
+      {
+        "name": "BioDietix",
+        "description": "Bilingual nutrition-support app that processes supported blood-test/allergy PDFs and evaluates barcode-scanned products using profile, allergy, BMI and nutrition-label signals.",
+        "url": "https://github.com/meliherenn/BioDietix",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "FastAPI",
+          "Firebase",
+          "Hive",
+          "Python"
+        ]
+      },
+      {
+        "name": "AI Portfolio Chatbot",
+        "description": "This application: bilingual portfolio data, FAISS-based CV retrieval, configurable OpenAI-compatible providers, offline answers and deterministic safety guardrails.",
+        "url": "https://github.com/meliherenn/melih-eren-ai-cv",
+        "stack": [
+          "Python",
+          "Streamlit",
+          "FAISS",
+          "sentence-transformers",
+          "OpenAI SDK"
+        ]
+      },
+      {
+        "name": "Expense Tracker",
+        "description": "Flutter application for income and expense tracking with Hive offline persistence and dashboard analytics.",
+        "url": "https://github.com/meliherenn/Expense-Tracker",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Hive",
+          "Material 3"
+        ]
+      },
+      {
+        "name": "Recipe App",
+        "description": "Flutter recipe discovery application with search, category filtering and favorites.",
+        "url": "https://github.com/meliherenn/Recipe-App",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Material 3"
+        ]
+      },
+      {
+        "name": "E-Commerce UI",
+        "description": "Modern Flutter e-commerce interface with product catalog, favorites, cart flow and validated forms.",
+        "url": "https://github.com/meliherenn/e-ticaret-ui",
+        "stack": [
+          "Flutter",
+          "Dart",
+          "Material 3"
+        ]
+      }
+    ],
+    "skills": {
+      "Mobile": "Kotlin, Jetpack Compose, Android SDK, Flutter, Dart, Material 3, Android TV",
+      "Architecture and state": "MVVM, Repository Pattern, BLoC/Cubit, Hilt, Coroutines",
+      "Data and APIs": "REST, FastAPI, Retrofit, OkHttp, Firebase Auth, App Check, Firestore, Room, DataStore, Hive",
+      "Media": "Media3/ExoPlayer, LibVLC, XMLTV, M3U/Xtream, Picture-in-Picture",
+      "Testing and delivery": "Unit testing, lint, GitHub Actions, Gradle, Google Play Console",
+      "Additional": "Python, C#, .NET, SQL, Microsoft SQL Server, Linux"
+    },
+    "certificates": [
+      {
+        "name": "Google Advanced Data Analytics Professional Certificate",
+        "url": "https://coursera.org/share/3bdaa4a0ad39d48a492a209df79b59a1"
+      },
+      {
+        "name": "IBM CyberStart - Kodluyoruz",
+        "url": "https://verified.sertifier.com/tr/verify/36023786839734"
+      },
+      {
+        "name": "Datathon Participation Certificate",
+        "url": "https://verified.sertifier.com/tr/verify/76472501215035/"
+      },
+      {
+        "name": "Agile Development Day - Coderspace",
+        "url": "https://verified.sertifier.com/tr/verify/37271703120064/"
+      },
+      {
+        "name": "Turkcell Future Writers - Python 201",
+        "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_201"
+      },
+      {
+        "name": "Turkcell Future Writers - Python 101",
+        "url": "https://gelecegiyazanlar.turkcell.com.tr/kisi/sertifika/python-programlama_101"
+      }
+    ],
+    "ui": {
+      "welcome_msg": "Hello! I am Melih's AI portfolio assistant. Ask me about his experience, projects, technical skills, education or certificates.",
+      "buttons": [
+        "💼 Experience",
+        "🚀 Projects",
+        "💻 Technical Skills",
+        "🎓 Education",
+        "🌟 Why Melih?",
+        "🎯 Career Goal"
+      ],
+      "hidden_prompts": [
+        "Briefly describe your work experience.",
+        "Describe your featured projects and the technologies you used.",
+        "List your core technical skills by category.",
+        "What is your education and expected graduation date?",
+        "Why should we consider you for a Junior Android or Flutter Developer role?",
+        "What are your short-term and long-term career goals?"
+      ]
+    }
+  }
 }
